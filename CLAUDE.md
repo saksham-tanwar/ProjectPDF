@@ -60,16 +60,25 @@ a pending status longer than `max(3 × WORKER_TIMEOUT_SECONDS, 30 min)` are mark
 **Storage.** Web and worker only share PDFs through `app/services/storage.py` (`LocalStorage` for dev, `S3Storage` for
 R2/S3). Never pass filesystem paths between processes. Production validation forces `STORAGE_BACKEND=s3`.
 
-**Answering.** `retrieve_chunks` uses the compound text index `(file_id, text)` — queries must include an equality match
-on `file_id`. `answer_question` runs in a threadpool; without `OPENAI_API_KEY`, or on OpenAI errors, it returns excerpts
-with `mode: "extractive"`. `mode: "none"` means nothing matched. Rate limits (`app/services/ratelimit.py`) fail closed.
+**RAG pipeline.** All OpenAI calls live in `app/services/ai.py` and raise `AIServiceError` (never SDK exceptions).
+Worker: chunks (1200 chars, 180 overlap, per page) are embedded in batches (`embed_texts`, unit-normalised float32) and
+stored on each chunk as a BSON float32 vector (`embedding`); the document records `embedding_signature`
+(`model:dimensions`). An embedding failure fails the document. Questions (`app/services/answering.py:answer`): if the
+request has `history`, `standalone_question` rewrites it; the query is embedded; `retrieve_chunks` fuses NumPy cosine
+ranking over the document's vectors with MongoDB `$text` ranking (compound index `(file_id, text)`, so queries must match
+`file_id`) via reciprocal rank fusion; `generate_answer` writes a page-cited answer from numbered excerpts plus history.
+Semantic retrieval is skipped when `embedding_signature` doesn't match current settings. Degradation: no key or query
+embedding failure → keyword only; generation failure → `mode: "extractive"` passages; nothing retrieved →
+`mode: "none"`. Tests replace `ai.embed_texts` / `standalone_question` / `generate_answer` with fakes (`tests/test_rag.py`)
+and override settings via the `settings_overrides` fixture. Rate limits (`app/services/ratelimit.py`) fail closed.
 
 **Config.** `app/config.py` is pydantic-settings; `get_settings()` is cached and validates production requirements
-(https URL, 32+ char `SESSION_SECRET`, Google credentials, s3 storage, no dev login). Worker code calls
+(https URL, 32+ char `SESSION_SECRET`, Google and OpenAI credentials, s3 storage, no dev login). Worker code calls
 `get_settings()` directly, so tests monkeypatch `app.queue.workers.get_settings`.
 
 **Frontend.** `frontend/src/api/client.ts` wraps fetch (cookies included, tolerant of non-JSON error bodies) and uses
-XHR for upload progress; `VITE_API_BASE_URL` is empty for same-origin. TanStack Query hooks in `api/queries.ts` poll
+XHR for upload progress; `VITE_API_BASE_URL` is empty for same-origin. Each question sends the last 6 completed turns
+as `history` (`historyFor`). TanStack Query hooks in `api/queries.ts` poll
 document status with backoff and reset `me` to `null` on any 401, which sends `RequireAuth` to `/login`. Conversations
 live in `sessionStorage` per document (`lib/useConversation.ts`); the server stores no chat history. `DocumentPage`
 renders `DocumentView` with `key={id}` so local state resets between documents. eslint-plugin-react-hooks v7 rules are

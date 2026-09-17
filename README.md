@@ -1,11 +1,14 @@
 # Paperchat
 
-Paperchat lets people sign in with Google, upload text-based PDFs and ask questions about them. Answers cite the pages
-they come from. Without an OpenAI key it returns the most relevant passages instead of generated answers.
+Paperchat is a retrieval-augmented generation (RAG) app: people sign in with Google, upload text-based PDFs and ask
+questions. Each PDF is split into passages and embedded with OpenAI; each question retrieves the most relevant passages
+(semantic vector search fused with keyword search) and an OpenAI model writes an answer citing the pages it used.
+Follow-up questions are rewritten using the conversation so references like "the second one" resolve correctly.
 
 - **Frontend:** React + TypeScript + Vite (`frontend/`), built into the same Docker image and served by the API.
 - **API:** FastAPI (`app/`) with Google sign-in, server-side sessions, per-user documents and rate limits.
-- **Worker:** RQ worker that downloads each PDF from storage, extracts text with pdfplumber and indexes it in MongoDB.
+- **Worker:** RQ worker that downloads each PDF from storage, extracts and chunks text with pdfplumber, embeds the
+  chunks with OpenAI and stores text + vectors in MongoDB.
 - **Data:** MongoDB (users, sessions, documents, text), Redis/Valkey (queue, rate limits), S3-compatible storage (PDFs).
 
 Production deployment on Render: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**.
@@ -26,7 +29,7 @@ Requires Python 3.12, Node 22 (20.19+ works), and MongoDB and Redis/Valkey reach
 open the repository in the dev container, which provides both).
 
 ```bash
-cp .env.example .env
+cp .env.example .env         # then set OPENAI_API_KEY in .env
 pip install -r requirements-dev.txt
 python -m app.main          # API on :8000 (auto-reloads)
 python -m app.worker        # document worker, in a second terminal
@@ -54,7 +57,7 @@ All `/api` routes except `/api/config` require a signed-in session cookie. Docum
 | GET | `/api/documents` | List your documents |
 | POST | `/api/documents` | Upload a PDF (multipart `file`), returns 202 and processes in the background |
 | GET | `/api/documents/{id}` | Status and metadata |
-| POST | `/api/documents/{id}/questions` | `{ "question": "..." }` → answer, sources, mode |
+| POST | `/api/documents/{id}/questions` | `{ "question": "...", "history": [{ "role", "content" }] }` → answer, sources, mode (`llm`, `extractive` fallback, `none`) |
 | DELETE | `/api/documents/{id}` | Delete PDF, extracted text and metadata |
 | GET | `/auth/google/login`, `/auth/google/callback` | Google sign-in |
 | POST | `/auth/logout` | Sign out |
@@ -63,6 +66,8 @@ All `/api` routes except `/api/config` require a signed-in session cookie. Docum
 ## Limitations
 
 - Only PDFs with selectable text are indexed; scanned PDFs need OCR first.
-- Retrieval uses MongoDB full-text search (English stemming), not semantic vectors. It works for questions that share
-  words with the document and does not segment Chinese, Japanese or Korean text.
+- Vectors are scored in the API process with NumPy, per document, which is fast up to the page limit. For search across
+  many documents at once, move to Atlas Vector Search (vectors are already stored as BSON float32).
+- Keyword retrieval (MongoDB text search, English stemming) doesn't segment Chinese, Japanese or Korean text; semantic
+  retrieval still works for those languages.
 - Conversations are kept in the browser tab, not stored on the server.

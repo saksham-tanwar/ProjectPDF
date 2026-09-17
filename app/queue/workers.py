@@ -6,6 +6,7 @@ from bson import ObjectId
 
 from app.config import get_settings
 from app.db.client import create_sync_client
+from app.services import ai
 from app.services.storage import create_storage
 
 log = logging.getLogger(__name__)
@@ -86,6 +87,16 @@ def process_file(file_id: str) -> None:
         )
         with create_storage(settings).local_copy(document["storage_key"]) as path:
             page_count, rows = extract_chunks(path, settings.max_pages)
+        embedding_signature = None
+        if settings.ai_enabled:
+            try:
+                vectors = ai.embed_texts([row["text"] for row in rows], settings)
+            except ai.AIServiceError:
+                log.exception("Embedding failed for document %s", file_id)
+                raise UserFacingError("We couldn't prepare this PDF for AI answers. Please delete it and upload it again.")
+            for row, vector in zip(rows, vectors):
+                row["embedding"] = ai.to_bson_vector(vector)
+            embedding_signature = ai.embedding_signature(settings)
         for row in rows:
             row.update(file_id=oid, owner_id=document["owner_id"])
         database.chunks.delete_many({"file_id": oid})
@@ -96,6 +107,7 @@ def process_file(file_id: str) -> None:
                 "status": "ready",
                 "pages": page_count,
                 "chunk_count": len(rows),
+                "embedding_signature": embedding_signature,
                 "processed_at": datetime.now(timezone.utc),
                 "updated_at": datetime.now(timezone.utc),
             }},

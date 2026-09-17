@@ -32,6 +32,11 @@ export interface Source {
   text: string;
 }
 
+export interface ConversationTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
 export type AnswerMode = "llm" | "extractive" | "none";
 
 export interface Answer {

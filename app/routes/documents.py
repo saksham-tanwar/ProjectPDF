@@ -2,6 +2,7 @@ import logging
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import PureWindowsPath
+from typing import Literal
 
 from bson import ObjectId
 from fastapi import APIRouter, Depends, File, HTTPException, Response, UploadFile
@@ -15,7 +16,7 @@ from app.config import Settings
 from app.deps import current_user, get_db, get_queue, get_redis, get_settings, get_storage
 from app.queue.q import enqueue_processing
 from app.services import ratelimit
-from app.services.answering import answer_question, retrieve_chunks
+from app.services import answering
 from app.services.auth import clear_session_cookie, public_user
 from app.services.storage import Storage
 
@@ -27,8 +28,15 @@ PDF_CONTENT_TYPES = {"application/pdf", "application/x-pdf", "application/octet-
 STALLED_MESSAGE = "Processing didn't finish. Please delete this document and upload it again."
 
 
+class Turn(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=4_000)
+
+
 class Question(BaseModel):
     question: str = Field(min_length=1, max_length=2_000)
+    # Recent conversation so follow-up questions ("what about the second one?") can be understood.
+    history: list[Turn] = Field(default_factory=list, max_length=12)
 
 
 def parse_id(value: str) -> ObjectId:
@@ -90,7 +98,7 @@ async def public_config(settings: Settings = Depends(get_settings)):
         "max_pages": settings.max_pages,
         "google_enabled": settings.google_enabled,
         "dev_login_enabled": settings.dev_login_enabled and not settings.is_production,
-        "ai_enabled": bool(settings.openai_api_key),
+        "ai_enabled": settings.ai_enabled,
     }
 
 
@@ -227,15 +235,8 @@ async def ask_question(
     question = payload.question.strip()
     if not question:
         raise HTTPException(422, "Please enter a question.")
-    sources = await retrieve_chunks(db.chunks, document["_id"], question)
-    if not sources:
-        return {
-            "answer": "I couldn't find passages in this PDF that match your question. Try different keywords.",
-            "sources": [],
-            "mode": "none",
-        }
-    answer, mode = await run_in_threadpool(answer_question, question, sources, settings)
-    return {"answer": answer, "sources": sources, "mode": mode}
+    history = [turn.model_dump() for turn in payload.history[-6:]]
+    return await answering.answer(db.chunks, document, question, history, settings)
 
 
 @router.delete("/documents/{file_id}", status_code=204)

@@ -35,10 +35,14 @@ envVarGroups:
         sync: false
       - key: GOOGLE_CLIENT_SECRET
         sync: false
-      - key: OPENAI_API_KEY           # optional: leave empty to return passages instead of generated answers
+      - key: OPENAI_API_KEY           # required: embeddings at upload + generated answers
         sync: false
       - key: OPENAI_MODEL
         value: gpt-4.1-mini
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: EMBEDDING_DIMENSIONS
+        value: "1024"
       - key: MAX_UPLOAD_MB
         value: "25"
       - key: MAX_PAGES

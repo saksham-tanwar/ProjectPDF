@@ -7,8 +7,8 @@ Browser ──HTTPS──▶ paperchat-web (FastAPI + built React app, same orig
                      ├─▶ MongoDB Atlas            users, sessions, documents, extracted text
                      ├─▶ paperchat-redis           Render Key Value: job queue + rate limits
                      ├─▶ Cloudflare R2 / AWS S3    uploaded PDFs (private bucket)
-                     └─▶ OpenAI (optional)         generated answers
-paperchat-worker ──▶ Key Value (jobs) ──▶ R2/S3 (download PDF) ──▶ Atlas (write text)
+                     └─▶ OpenAI                    question embedding + generated answer
+paperchat-worker ──▶ Key Value (jobs) ──▶ R2/S3 (download PDF) ──▶ OpenAI (chunk embeddings) ──▶ Atlas (text + vectors)
 ```
 
 `render.yaml` creates `paperchat-web`, `paperchat-worker` and `paperchat-redis`. Atlas, the bucket and Google OAuth are
@@ -51,11 +51,11 @@ or your custom domain once it's attached. If it changes, update it on Render **a
 1. Push this branch to GitHub and merge it to `main`.
 2. Render dashboard → *New* → *Blueprint* → pick the repository. Render reads `render.yaml`.
 3. Fill in the prompted values: `PUBLIC_BASE_URL`, `MONGO_URL`, the `S3_*` values, `GOOGLE_CLIENT_*` and
-   (optionally) `OPENAI_API_KEY`. `SESSION_SECRET` is generated for you.
+   `OPENAI_API_KEY`. `SESSION_SECRET` is generated for you.
 4. Apply. The web service is healthy when `/healthz` responds; `/readyz` additionally checks MongoDB and Redis.
 
 The services refuse to start in production if a required setting is missing or unsafe (http URL, short session secret,
-missing Google credentials, local storage, developer sign-in enabled). The error is printed in the deploy log.
+missing Google or OpenAI credentials, local storage, developer sign-in enabled). The error is printed in the deploy log.
 
 Deploys run automatically after GitHub Actions checks pass on `main` (`autoDeployTrigger: checksPass`).
 
@@ -82,4 +82,5 @@ redirect URI to the new domain.
 | Worker out of memory | Raise `paperchat-worker` to `1c-2g`, or lower `MAX_PAGES` / `MAX_UPLOAD_MB`. Documents whose job died are marked failed automatically. |
 | Rotate `SESSION_SECRET` | Only protects the short-lived OAuth state cookie; rotating it doesn't sign anyone out. |
 | Sign everyone out | Delete all documents in the Atlas `sessions` collection. |
+| Change embedding model or size | Set `OPENAI_EMBEDDING_MODEL` / `EMBEDDING_DIMENSIONS`. Existing documents fall back to keyword retrieval until they are re-uploaded. |
 | Tune limits | `USER_MAX_DOCUMENTS`, `RATE_LIMIT_QUESTIONS_PER_MINUTE`, `RATE_LIMIT_QUESTIONS_PER_DAY`, `RATE_LIMIT_UPLOADS_PER_HOUR`. |

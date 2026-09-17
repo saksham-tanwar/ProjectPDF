@@ -41,7 +41,13 @@ def mongo_available() -> bool:
 
 
 @pytest.fixture
-def settings(tmp_path) -> Settings:
+def settings_overrides() -> dict:
+    """Override in a test module to change settings for every test there."""
+    return {}
+
+
+@pytest.fixture
+def settings(tmp_path, settings_overrides) -> Settings:
     dist = tmp_path / "dist"
     (dist / "assets").mkdir(parents=True)
     (dist / "index.html").write_text("<!doctype html><div id=root></div>")
@@ -57,6 +63,7 @@ def settings(tmp_path) -> Settings:
         max_upload_mb=1,
         rate_limit_questions_per_minute=5,
         _env_file=None,
+        **settings_overrides,
     )
 
 

@@ -38,8 +38,10 @@ export function PrivacyPage() {
           <>
             <h2>AI processing</h2>
             <p>
-              To generate answers, your question and the most relevant passages from your document are sent to OpenAI.
-              Whole documents are not sent.
+              To make documents searchable by meaning, the text extracted from each PDF is sent to OpenAI to create
+              embeddings (numeric representations of the text), which we store alongside the text. When you ask a
+              question, your question, the recent messages in that conversation and the most relevant passages are sent
+              to OpenAI to generate the answer.
             </p>
           </>
         )}

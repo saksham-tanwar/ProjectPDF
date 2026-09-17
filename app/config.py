@@ -40,6 +40,9 @@ class Settings(BaseSettings):
 
     openai_api_key: str = ""
     openai_model: str = "gpt-4.1-mini"
+    openai_embedding_model: str = "text-embedding-3-small"
+    embedding_dimensions: int = Field(default=1024, ge=256, le=3072)
+    retrieval_top_k: int = Field(default=6, ge=1, le=20)
     openai_timeout_seconds: float = Field(default=45, gt=0)
     openai_max_output_tokens: int = Field(default=800, ge=50)
 
@@ -69,6 +72,8 @@ class Settings(BaseSettings):
                 problems.append("PUBLIC_BASE_URL must be an https:// URL in production")
             if len(self.session_secret) < 32:
                 problems.append("SESSION_SECRET must be at least 32 characters in production")
+            if not self.openai_api_key:
+                problems.append("OPENAI_API_KEY is required in production (answers are generated with OpenAI)")
             if not (self.google_client_id and self.google_client_secret):
                 problems.append("GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET are required in production")
             if self.dev_login_enabled:
@@ -86,6 +91,10 @@ class Settings(BaseSettings):
     @property
     def max_upload_bytes(self) -> int:
         return self.max_upload_mb * 1024 * 1024
+
+    @property
+    def ai_enabled(self) -> bool:
+        return bool(self.openai_api_key)
 
     @property
     def google_enabled(self) -> bool:

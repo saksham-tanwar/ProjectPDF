@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 
 import { ApiError, api } from "../api/client";
-import { keys, useDocument, useMe } from "../api/queries";
+import { keys, useConfig, useDocument, useMe } from "../api/queries";
 import { isPending, type PaperDocument } from "../api/types";
 import { Composer, MessageList } from "../components/Chat";
 import { ConfirmDialog } from "../components/ConfirmDialog";
@@ -148,6 +148,7 @@ function FailedState({ document, onDelete }: { document: PaperDocument; onDelete
 
 function ReadyState({ document }: { document: PaperDocument }) {
   const { data: user } = useMe();
+  const config = useConfig();
   const conversation = useConversation(document.id);
 
   return (
@@ -157,7 +158,13 @@ function ReadyState({ document }: { document: PaperDocument }) {
           <div className="chat-empty">
             <MessagesSquare size={28} aria-hidden />
             <h2>Ask anything about this document</h2>
-            <p>Specific questions work best — use words you'd expect to find in the text, like names, terms or figures.</p>
+            <p>Ask in your own words — summaries, comparisons, definitions or follow-ups. Answers cite the pages they use.</p>
+            {config.data?.ai_enabled === false && (
+              <p className="notice notice-warn">
+                AI answers aren't configured on this server (OPENAI_API_KEY is missing), so you'll get matching passages
+                instead of answers.
+              </p>
+            )}
           </div>
         ) : (
           <MessageList

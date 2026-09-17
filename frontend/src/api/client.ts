@@ -1,4 +1,4 @@
-import type { Answer, PaperDocument, PublicConfig, User } from "./types";
+import type { Answer, ConversationTurn, PaperDocument, PublicConfig, User } from "./types";
 
 /** Empty by default: the app is served from the same origin as the API. */
 export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
@@ -85,7 +85,8 @@ export const api = {
   listDocuments: () => request<{ documents: PaperDocument[] }>("/api/documents").then((body) => body.documents),
   getDocument: (id: string) => request<PaperDocument>(documentPath(id)),
   deleteDocument: (id: string) => request<null>(documentPath(id), send("DELETE")),
-  ask: (id: string, question: string) => request<Answer>(`${documentPath(id)}/questions`, send("POST", { question })),
+  ask: (id: string, question: string, history: ConversationTurn[] = []) =>
+    request<Answer>(`${documentPath(id)}/questions`, send("POST", { question, history })),
 
   /** Uses XHR rather than fetch so the UI can show real upload progress. */
   uploadDocument(file: File, onProgress: (fraction: number) => void, signal?: AbortSignal): Promise<PaperDocument> {
