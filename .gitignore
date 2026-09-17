@@ -224,3 +224,6 @@ __marimo__/
 # Editor swap files
 *.swp
 *.swo
+
+# Local uploads and scratch data
+.runtime/

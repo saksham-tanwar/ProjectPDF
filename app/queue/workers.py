@@ -1,11 +1,20 @@
-"""Synchronous RQ worker: extraction deliberately runs outside the web process."""
+"""RQ jobs. These run synchronously in the worker process, never in the web process."""
+import logging
 from datetime import datetime, timezone
-from pathlib import Path
 
 from bson import ObjectId
-from pymongo import MongoClient
 
-from app.config import settings
+from app.config import get_settings
+from app.db.client import create_sync_client
+from app.services.storage import create_storage
+
+log = logging.getLogger(__name__)
+
+GENERIC_FAILURE = "We couldn't process this PDF. It may be damaged or password-protected."
+
+
+class UserFacingError(Exception):
+    """A processing failure whose message is safe to show to the document owner."""
 
 
 def split_text(text: str, size: int = 1_200, overlap: int = 180) -> list[str]:
@@ -20,35 +29,92 @@ def split_text(text: str, size: int = 1_200, overlap: int = 180) -> list[str]:
             if boundary > start:
                 end = boundary
         result.append(text[start:end])
+        if end >= len(text):
+            break
         start = max(end - overlap, start + 1)
     return result
 
 
-def process_file(file_id: str) -> None:
+def extract_chunks(pdf_path, max_pages: int) -> tuple[int, list[dict]]:
     import pdfplumber
+    from pdfminer.pdfdocument import PDFEncryptionError
+    from pdfplumber.utils.exceptions import PdfminerException
 
-    client = MongoClient(settings.mongo_url, serverSelectionTimeoutMS=10_000)
-    database = client[settings.mongo_database]
-    files, chunks, oid = database.files, database.chunks, ObjectId(file_id)
     try:
-        chunks.create_index("file_id")
-        document = files.find_one({"_id": oid})
-        if not document:
-            return
-        files.update_one({"_id": oid}, {"$set": {"status": "processing", "error": None}})
-        rows = []
-        with pdfplumber.open(Path(document["file_path"])) as pdf:
+        with pdfplumber.open(pdf_path) as pdf:
             page_count = len(pdf.pages)
+            if page_count > max_pages:
+                raise UserFacingError(f"This PDF has {page_count} pages; the limit is {max_pages}.")
+            rows = []
             for page_number, page in enumerate(pdf.pages, start=1):
                 for chunk_index, text in enumerate(split_text(page.extract_text() or "")):
-                    rows.append({"file_id": oid, "page": page_number, "index": chunk_index, "text": text})
-        if not rows:
-            raise ValueError("No selectable text was found. Scanned PDFs are not supported yet.")
-        chunks.delete_many({"file_id": oid})
-        chunks.insert_many(rows)
-        files.update_one({"_id": oid}, {"$set": {"status": "ready", "pages": page_count, "chunk_count": len(rows), "processed_at": datetime.now(timezone.utc)}})
-    except Exception as exc:
-        files.update_one({"_id": oid}, {"$set": {"status": "failed", "error": str(exc)[:500]}})
+                    rows.append({"page": page_number, "index": chunk_index, "text": text})
+                page.close()
+    except PdfminerException as error:
+        if any(isinstance(arg, PDFEncryptionError) for arg in error.args):
+            raise UserFacingError("This PDF is password-protected.")
+        raise
+    if not rows:
+        raise UserFacingError("No selectable text was found. Scanned PDFs are not supported yet.")
+    return page_count, rows
+
+
+def _mark_failed(file_id: str, message: str) -> None:
+    settings = get_settings()
+    client = create_sync_client(settings)
+    try:
+        client[settings.mongo_database].files.update_one(
+            {"_id": ObjectId(file_id), "status": {"$ne": "ready"}},
+            {"$set": {"status": "failed", "error": message, "updated_at": datetime.now(timezone.utc)}},
+        )
+    finally:
+        client.close()
+
+
+def process_file(file_id: str) -> None:
+    settings = get_settings()
+    client = create_sync_client(settings)
+    database = client[settings.mongo_database]
+    oid = ObjectId(file_id)
+    try:
+        document = database.files.find_one({"_id": oid})
+        if not document:
+            log.info("Document %s was deleted before processing", file_id)
+            return
+        database.files.update_one(
+            {"_id": oid}, {"$set": {"status": "processing", "error": None, "updated_at": datetime.now(timezone.utc)}}
+        )
+        with create_storage(settings).local_copy(document["storage_key"]) as path:
+            page_count, rows = extract_chunks(path, settings.max_pages)
+        for row in rows:
+            row.update(file_id=oid, owner_id=document["owner_id"])
+        database.chunks.delete_many({"file_id": oid})
+        database.chunks.insert_many(rows, ordered=False)
+        result = database.files.update_one(
+            {"_id": oid},
+            {"$set": {
+                "status": "ready",
+                "pages": page_count,
+                "chunk_count": len(rows),
+                "processed_at": datetime.now(timezone.utc),
+                "updated_at": datetime.now(timezone.utc),
+            }},
+        )
+        if result.matched_count == 0:
+            # Deleted while processing: don't leave orphaned chunks behind.
+            database.chunks.delete_many({"file_id": oid})
+    except UserFacingError as error:
+        _mark_failed(file_id, str(error))
+    except Exception:
+        log.exception("Processing failed for document %s", file_id)
+        _mark_failed(file_id, GENERIC_FAILURE)
         raise
     finally:
         client.close()
+
+
+def on_job_failure(job, connection, exc_type, exc_value, traceback) -> None:
+    """Covers failures that bypass process_file's own handling, such as job timeouts."""
+    if exc_type is not None and issubclass(exc_type, Exception) and job.args:
+        message = "Processing took too long. Try a smaller PDF." if "Timeout" in exc_type.__name__ else GENERIC_FAILURE
+        _mark_failed(job.args[0], message)
