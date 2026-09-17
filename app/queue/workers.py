@@ -1,76 +1,54 @@
-import os
-from ..db.collections.files import files_collection
+"""Synchronous RQ worker: extraction deliberately runs outside the web process."""
+from datetime import datetime, timezone
+from pathlib import Path
+
 from bson import ObjectId
-from pdf2image import convert_from_path
-import base64
-from openai import OpenAI
+from pymongo import MongoClient
 
-client = OpenAI()
-
-# Function to encode the image
+from app.config import settings
 
 
-def encode_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
+def split_text(text: str, size: int = 1_200, overlap: int = 180) -> list[str]:
+    text = " ".join(text.split())
+    if not text:
+        return []
+    result, start = [], 0
+    while start < len(text):
+        end = min(len(text), start + size)
+        if end < len(text):
+            boundary = text.rfind(" ", start + size // 2, end)
+            if boundary > start:
+                end = boundary
+        result.append(text[start:end])
+        start = max(end - overlap, start + 1)
+    return result
 
 
-async def process_file(id: str):
-    file_doc = await files_collection.find_one({"_id": ObjectId(id)})
-    file_path = file_doc["file_path"]
+def process_file(file_id: str) -> None:
+    import pdfplumber
 
-    await files_collection.update_one({"_id": ObjectId(id)}, {
-        "$set": {
-            "status": "processing"
-        }
-    })
-
-    await files_collection.update_one({"_id": ObjectId(id)}, {
-        "$set": {
-            "status": "converting to images"
-        }
-    })
-
-    pages = convert_from_path(file_path)
-    images = []
-
-    image_dir = f"/mnt/uploads/images/{id}"
-    os.makedirs(image_dir, exist_ok=True)
-
-    for i, page in enumerate(pages):
-        image_save_path = f"{image_dir}/image-{i}.jpg"
-        page.save(image_save_path, 'JPEG')
-        images.append(image_save_path)
-
-    await files_collection.update_one({"_id": ObjectId(id)}, {
-        "$set": {
-            "status": "Converted to image successfully"
-        }
-    })
-
-    images_base64 = [encode_image(img) for img in images]
-
-    result = client.responses.create(
-        model="gpt-4.1",
-        input=[
-            {
-                "role": "user",
-                "content": [
-                    {"type": "input_text", "text": "roast this mail"},
-                    {
-                        # flake8: noqa
-                        "type": "input_image",
-                        "image_url": f"data:image/jpeg;base64,{images_base64[0]}",
-                    },
-                ],
-            }
-        ],
-    )
-
-    await files_collection.update_one({"_id": ObjectId(id)}, {
-        "$set": {
-            "status": "proccesed",
-            "result": result.output_text
-        }})
-
-    print(result.output_text)
+    client = MongoClient(settings.mongo_url, serverSelectionTimeoutMS=10_000)
+    database = client[settings.mongo_database]
+    files, chunks, oid = database.files, database.chunks, ObjectId(file_id)
+    try:
+        chunks.create_index("file_id")
+        document = files.find_one({"_id": oid})
+        if not document:
+            return
+        files.update_one({"_id": oid}, {"$set": {"status": "processing", "error": None}})
+        rows = []
+        with pdfplumber.open(Path(document["file_path"])) as pdf:
+            page_count = len(pdf.pages)
+            for page_number, page in enumerate(pdf.pages, start=1):
+                for chunk_index, text in enumerate(split_text(page.extract_text() or "")):
+                    rows.append({"file_id": oid, "page": page_number, "index": chunk_index, "text": text})
+        if not rows:
+            raise ValueError("No selectable text was found. Scanned PDFs are not supported yet.")
+        chunks.delete_many({"file_id": oid})
+        chunks.insert_many(rows)
+        files.update_one({"_id": oid}, {"$set": {"status": "ready", "pages": page_count, "chunk_count": len(rows), "processed_at": datetime.now(timezone.utc)}})
+    except Exception as exc:
+        files.update_one({"_id": oid}, {"$set": {"status": "failed", "error": str(exc)[:500]}})
+        raise
+    finally:
+        client.close()
