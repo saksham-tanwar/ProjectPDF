@@ -64,7 +64,7 @@ class FakeAI:
 
 @pytest.fixture
 def settings_overrides():
-    return {"openai_api_key": "sk-test", "embedding_dimensions": 256}
+    return {"ai_api_key": "sk-test", "embedding_dimensions": 256}
 
 
 @pytest.fixture

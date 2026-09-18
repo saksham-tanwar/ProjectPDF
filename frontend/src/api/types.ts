@@ -13,6 +13,7 @@ export interface PublicConfig {
   google_enabled: boolean;
   dev_login_enabled: boolean;
   ai_enabled: boolean;
+  ai_provider: string | null;
 }
 
 export interface PaperDocument {

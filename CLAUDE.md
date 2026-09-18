@@ -60,7 +60,12 @@ a pending status longer than `max(3 × WORKER_TIMEOUT_SECONDS, 30 min)` are mark
 **Storage.** Web and worker only share PDFs through `app/services/storage.py` (`LocalStorage` for dev, `S3Storage` for
 R2/S3). Never pass filesystem paths between processes. Production validation forces `STORAGE_BACKEND=s3`.
 
-**RAG pipeline.** All OpenAI calls live in `app/services/ai.py` and raise `AIServiceError` (never SDK exceptions).
+**RAG pipeline.** All AI calls live in `app/services/ai.py` and raise `AIServiceError` (never SDK exceptions). The
+provider is any OpenAI-compatible API (`AI_BASE_URL`; Gemini in `.env.example`/`render.yaml`, OpenAI when empty), so
+only Chat Completions and Embeddings are used — not the Responses API, which Gemini lacks. Embeddings are requested at
+native size and truncated to `EMBEDDING_DIMENSIONS` then re-normalised (no `dimensions` parameter); `chat_options`
+picks `max_completion_tokens` for OpenAI vs `max_tokens` elsewhere and adds `reasoning_effort` only when set. Settings
+use `AI_*` names with `OPENAI_*` aliases.
 Worker: chunks (1200 chars, 180 overlap, per page) are embedded in batches (`embed_texts`, unit-normalised float32) and
 stored on each chunk as a BSON float32 vector (`embedding`); the document records `embedding_signature`
 (`model:dimensions`). An embedding failure fails the document. Questions (`app/services/answering.py:answer`): if the
@@ -73,7 +78,7 @@ embedding failure → keyword only; generation failure → `mode: "extractive"` 
 and override settings via the `settings_overrides` fixture. Rate limits (`app/services/ratelimit.py`) fail closed.
 
 **Config.** `app/config.py` is pydantic-settings; `get_settings()` is cached and validates production requirements
-(https URL, 32+ char `SESSION_SECRET`, Google and OpenAI credentials, s3 storage, no dev login). Worker code calls
+(https URL, 32+ char `SESSION_SECRET`, Google and AI credentials, s3 storage, no dev login). Worker code calls
 `get_settings()` directly, so tests monkeypatch `app.queue.workers.get_settings`.
 
 **Frontend.** `frontend/src/api/client.ts` wraps fetch (cookies included, tolerant of non-JSON error bodies) and uses

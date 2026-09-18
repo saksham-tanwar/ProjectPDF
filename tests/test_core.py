@@ -71,7 +71,7 @@ def test_production_settings_require_secure_configuration():
     with pytest.raises(ValueError) as error:
         Settings(app_env="production", public_base_url="http://example.com", dev_login_enabled=True, _env_file=None)
     message = str(error.value)
-    for expected in ("https://", "SESSION_SECRET", "OPENAI_API_KEY", "GOOGLE_CLIENT_ID", "DEV_LOGIN_ENABLED", "STORAGE_BACKEND"):
+    for expected in ("https://", "SESSION_SECRET", "AI_API_KEY", "GOOGLE_CLIENT_ID", "DEV_LOGIN_ENABLED", "STORAGE_BACKEND"):
         assert expected in message
 
 
@@ -82,7 +82,7 @@ def test_production_settings_accept_complete_configuration():
         session_secret="s" * 40,
         google_client_id="id",
         google_client_secret="secret",
-        openai_api_key="sk-test",
+        ai_api_key="sk-test",
         storage_backend="s3",
         s3_bucket="bucket",
         s3_access_key_id="key",

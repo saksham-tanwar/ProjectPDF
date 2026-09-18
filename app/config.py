@@ -4,14 +4,14 @@ from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
 
-from pydantic import Field, field_validator, model_validator
+from pydantic import AliasChoices, Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore", populate_by_name=True)
 
     app_env: Literal["development", "production", "test"] = "development"
     public_base_url: str = "http://localhost:8000"
@@ -38,13 +38,23 @@ class Settings(BaseSettings):
     google_client_secret: str = ""
     dev_login_enabled: bool = False
 
-    openai_api_key: str = ""
-    openai_model: str = "gpt-4.1-mini"
-    openai_embedding_model: str = "text-embedding-3-small"
+    # Any OpenAI-compatible API: OpenAI by default, or e.g. Gemini via AI_BASE_URL. OPENAI_* names are accepted too.
+    ai_api_key: str = Field(default="", validation_alias=AliasChoices("AI_API_KEY", "OPENAI_API_KEY"))
+    ai_base_url: str = Field(default="", validation_alias=AliasChoices("AI_BASE_URL", "OPENAI_BASE_URL"))
+    ai_chat_model: str = Field(default="gpt-4.1-mini", validation_alias=AliasChoices("AI_CHAT_MODEL", "OPENAI_MODEL"))
+    ai_embedding_model: str = Field(
+        default="text-embedding-3-small", validation_alias=AliasChoices("AI_EMBEDDING_MODEL", "OPENAI_EMBEDDING_MODEL")
+    )
+    # Sent only when set; use for reasoning models (e.g. "low" for Gemini) so thinking doesn't eat the answer budget.
+    ai_reasoning_effort: str = Field(default="", validation_alias=AliasChoices("AI_REASONING_EFFORT"))
+    ai_timeout_seconds: float = Field(
+        default=45, gt=0, validation_alias=AliasChoices("AI_TIMEOUT_SECONDS", "OPENAI_TIMEOUT_SECONDS")
+    )
+    ai_max_output_tokens: int = Field(
+        default=1200, ge=50, validation_alias=AliasChoices("AI_MAX_OUTPUT_TOKENS", "OPENAI_MAX_OUTPUT_TOKENS")
+    )
     embedding_dimensions: int = Field(default=1024, ge=256, le=3072)
     retrieval_top_k: int = Field(default=6, ge=1, le=20)
-    openai_timeout_seconds: float = Field(default=45, gt=0)
-    openai_max_output_tokens: int = Field(default=800, ge=50)
 
     max_upload_mb: int = Field(default=25, ge=1)
     max_pages: int = Field(default=500, ge=1)
@@ -72,8 +82,8 @@ class Settings(BaseSettings):
                 problems.append("PUBLIC_BASE_URL must be an https:// URL in production")
             if len(self.session_secret) < 32:
                 problems.append("SESSION_SECRET must be at least 32 characters in production")
-            if not self.openai_api_key:
-                problems.append("OPENAI_API_KEY is required in production (answers are generated with OpenAI)")
+            if not self.ai_api_key:
+                problems.append("AI_API_KEY is required in production (embeddings and answers need an AI provider)")
             if not (self.google_client_id and self.google_client_secret):
                 problems.append("GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET are required in production")
             if self.dev_login_enabled:
@@ -94,7 +104,16 @@ class Settings(BaseSettings):
 
     @property
     def ai_enabled(self) -> bool:
-        return bool(self.openai_api_key)
+        return bool(self.ai_api_key)
+
+    @property
+    def ai_provider(self) -> str:
+        host = urlsplit(self.ai_base_url).hostname or "api.openai.com"
+        if host == "openai.com" or host.endswith(".openai.com"):
+            return "OpenAI"
+        if host.endswith("googleapis.com"):
+            return "Google Gemini"
+        return host
 
     @property
     def google_enabled(self) -> bool:

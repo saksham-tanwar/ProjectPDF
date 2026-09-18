@@ -41,7 +41,14 @@ def test_api_requires_sign_in(client):
 
 def test_public_config_and_health(client):
     config = client.get("/api/config").json()
-    assert config == {"max_upload_mb": 1, "max_pages": 500, "google_enabled": False, "dev_login_enabled": True, "ai_enabled": False}
+    assert config == {
+        "max_upload_mb": 1,
+        "max_pages": 500,
+        "google_enabled": False,
+        "dev_login_enabled": True,
+        "ai_enabled": False,
+        "ai_provider": None,
+    }
     assert client.get("/healthz").json() == {"status": "ok"}
 
 

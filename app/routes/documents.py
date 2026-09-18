@@ -99,6 +99,7 @@ async def public_config(settings: Settings = Depends(get_settings)):
         "google_enabled": settings.google_enabled,
         "dev_login_enabled": settings.dev_login_enabled and not settings.is_production,
         "ai_enabled": settings.ai_enabled,
+        "ai_provider": settings.ai_provider if settings.ai_enabled else None,
     }
 
 

@@ -19,6 +19,7 @@ function mockApi(config: Partial<PublicConfig>) {
       google_enabled: false,
       dev_login_enabled: false,
       ai_enabled: true,
+      ai_provider: "OpenAI",
       ...config,
     };
     return new Response(JSON.stringify(body), { status: 200, headers: { "content-type": "application/json" } });

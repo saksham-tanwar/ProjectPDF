@@ -161,7 +161,7 @@ function ReadyState({ document }: { document: PaperDocument }) {
             <p>Ask in your own words — summaries, comparisons, definitions or follow-ups. Answers cite the pages they use.</p>
             {config.data?.ai_enabled === false && (
               <p className="notice notice-warn">
-                AI answers aren't configured on this server (OPENAI_API_KEY is missing), so you'll get matching passages
+                AI answers aren't configured on this server (AI_API_KEY is missing), so you'll get matching passages
                 instead of answers.
               </p>
             )}

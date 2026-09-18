@@ -1,14 +1,15 @@
 # Paperchat
 
 Paperchat is a retrieval-augmented generation (RAG) app: people sign in with Google, upload text-based PDFs and ask
-questions. Each PDF is split into passages and embedded with OpenAI; each question retrieves the most relevant passages
-(semantic vector search fused with keyword search) and an OpenAI model writes an answer citing the pages it used.
+questions. Each PDF is split into passages and embedded; each question retrieves the most relevant passages (semantic
+vector search fused with keyword search) and an LLM writes an answer citing the pages it used. Any OpenAI-compatible
+provider works: Google Gemini (free tier) is configured by default, OpenAI by changing a few variables.
 Follow-up questions are rewritten using the conversation so references like "the second one" resolve correctly.
 
 - **Frontend:** React + TypeScript + Vite (`frontend/`), built into the same Docker image and served by the API.
 - **API:** FastAPI (`app/`) with Google sign-in, server-side sessions, per-user documents and rate limits.
 - **Worker:** RQ worker that downloads each PDF from storage, extracts and chunks text with pdfplumber, embeds the
-  chunks with OpenAI and stores text + vectors in MongoDB.
+  chunks with the AI provider and stores text + vectors in MongoDB.
 - **Data:** MongoDB (users, sessions, documents, text), Redis/Valkey (queue, rate limits), S3-compatible storage (PDFs).
 
 Production deployment on Render: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**.
@@ -29,7 +30,7 @@ Requires Python 3.12, Node 22 (20.19+ works), and MongoDB and Redis/Valkey reach
 open the repository in the dev container, which provides both).
 
 ```bash
-cp .env.example .env         # then set OPENAI_API_KEY in .env
+cp .env.example .env         # then set AI_API_KEY (free Gemini key: https://aistudio.google.com/apikey)
 pip install -r requirements-dev.txt
 python -m app.main          # API on :8000 (auto-reloads)
 python -m app.worker        # document worker, in a second terminal

@@ -7,6 +7,7 @@ import { Brand } from "../components/Brand";
 export function PrivacyPage() {
   const config = useConfig();
   const aiEnabled = config.data?.ai_enabled ?? true;
+  const provider = config.data?.ai_provider ?? "our AI provider";
 
   return (
     <div className="prose-page">
@@ -38,10 +39,10 @@ export function PrivacyPage() {
           <>
             <h2>AI processing</h2>
             <p>
-              To make documents searchable by meaning, the text extracted from each PDF is sent to OpenAI to create
+              To make documents searchable by meaning, the text extracted from each PDF is sent to {provider} to create
               embeddings (numeric representations of the text), which we store alongside the text. When you ask a
               question, your question, the recent messages in that conversation and the most relevant passages are sent
-              to OpenAI to generate the answer.
+              to {provider} to generate the answer.
             </p>
           </>
         )}
