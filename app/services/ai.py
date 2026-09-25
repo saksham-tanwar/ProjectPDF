@@ -54,6 +54,13 @@ def _normalize(matrix: np.ndarray) -> np.ndarray:
     return matrix / np.where(norms == 0, 1, norms)
 
 
+def _in_input_order(data: list) -> list:
+    """OpenAI numbers each embedding; Gemini's compatible endpoint leaves `index` unset but answers in order."""
+    if all(getattr(item, "index", None) is not None for item in data):
+        return sorted(data, key=lambda item: item.index)
+    return data
+
+
 def embed_texts(texts: list[str], settings: Settings) -> np.ndarray:
     """Returns an (n, EMBEDDING_DIMENSIONS) float32 matrix of unit vectors, in input order.
 
@@ -68,7 +75,7 @@ def embed_texts(texts: list[str], settings: Settings) -> np.ndarray:
             response = client.embeddings.create(
                 model=settings.ai_embedding_model, input=texts[start:start + EMBEDDING_BATCH_SIZE]
             )
-            vectors.extend(item.embedding for item in sorted(response.data, key=lambda item: item.index))
+            vectors.extend(item.embedding for item in _in_input_order(response.data))
     except OpenAIError as error:
         raise AIServiceError(f"Embedding request failed: {error.__class__.__name__}: {error}") from error
     if len(vectors) != len(texts) or not vectors:

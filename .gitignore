@@ -227,3 +227,4 @@ __marimo__/
 
 # Local uploads and scratch data
 .runtime/
+.venv-win/

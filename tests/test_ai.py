@@ -15,8 +15,9 @@ def make_settings(**overrides) -> Settings:
 
 
 class FakeClient:
-    def __init__(self, native_size=3072, content="An answer [p. 1]", finish_reason="stop"):
+    def __init__(self, native_size=3072, content="An answer [p. 1]", finish_reason="stop", index_field=True):
         self.native_size = native_size
+        self.index_field = index_field  # Gemini's compatible endpoint leaves index unset
         self.content = content
         self.finish_reason = finish_reason
         self.embedding_calls = []
@@ -28,10 +29,11 @@ class FakeClient:
         self.embedding_calls.append(kwargs)
         rng = np.random.default_rng(len(self.embedding_calls))
         data = [
-            SimpleNamespace(index=index, embedding=rng.normal(size=self.native_size).tolist())
-            for index in range(len(kwargs["input"]))
+            SimpleNamespace(index=index if self.index_field else None, embedding=(rng.normal(size=self.native_size) + position).tolist())
+            for position, index in enumerate(range(len(kwargs["input"])))
         ]
-        return SimpleNamespace(data=list(reversed(data)))  # out of order on purpose
+        # OpenAI may answer out of order, which is what `index` is for; Gemini answers in order without it.
+        return SimpleNamespace(data=list(reversed(data)) if self.index_field else data)
 
     def _chat(self, **kwargs):
         self.chat_calls.append(kwargs)
@@ -53,6 +55,16 @@ def test_embeddings_are_truncated_normalised_batched_and_ordered(fake_client):
     assert np.allclose(np.linalg.norm(vectors, axis=1), 1.0, atol=1e-5)
     assert [len(call["input"]) for call in fake_client.embedding_calls] == [96, 96, 8]
     assert all("dimensions" not in call for call in fake_client.embedding_calls)
+
+
+def test_embeddings_keep_request_order_when_the_provider_omits_index(monkeypatch):
+    """Gemini's OpenAI-compatible endpoint returns index=None; sorting on it used to crash."""
+    with_index, without_index = FakeClient(), FakeClient(index_field=False)
+    settings = make_settings(embedding_dimensions=768)
+    monkeypatch.setattr(ai, "client_for", lambda s, max_retries=2: with_index)
+    ordered = ai.embed_texts(["a", "b", "c"], settings)
+    monkeypatch.setattr(ai, "client_for", lambda s, max_retries=2: without_index)
+    assert np.allclose(ai.embed_texts(["a", "b", "c"], settings), ordered)
 
 
 def test_embeddings_smaller_than_configured_size_are_rejected(fake_client):
