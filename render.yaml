@@ -52,6 +52,8 @@ envVarGroups:
         value: low
       - key: AI_MAX_OUTPUT_TOKENS
         value: "2048"
+      - key: RERANK_MODE            # see eval/README.md; "never" saves ~110 MB of memory
+        value: lexical-only
       - key: MAX_UPLOAD_MB
         value: "25"
       - key: MAX_PAGES
@@ -64,7 +66,7 @@ services:
     name: paperchat-web
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: 0.5c-512mb
+    plan: 0.5c-512mb              # raise to 1c-2g, or set RERANK_MODE=never, if reranking is turned on
     region: oregon
     healthCheckPath: /healthz
     autoDeployTrigger: checksPass

@@ -30,6 +30,8 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Fail if MongoDB-backed tests would be skipped
         run: python -m pytest -q -rs | tee pytest.log; test "${PIPESTATUS[0]}" -eq 0 && ! grep -q "SKIPPED" pytest.log
+      - name: Retrieval evaluation smoke run (no AI provider needed)
+        run: python -m eval.runner --configs keyword --k 5 --quiet
 
   frontend:
     runs-on: ubuntu-latest

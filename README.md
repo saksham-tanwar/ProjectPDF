@@ -10,7 +10,9 @@ get three things:
 - **Chat** — ask questions and get an answer citing the pages it used; follow-ups are rewritten using the conversation
   so references like "the second one" resolve correctly.
 
-Retrieval fuses semantic vector search with MongoDB keyword search. Any OpenAI-compatible provider works: Google
+Retrieval puts semantic vector search first and backfills with MongoDB keyword search, a choice measured rather than
+assumed — see **[eval/README.md](eval/README.md)**, which scores retrieval on a fixed question set (hit@k, MRR, nDCG)
+and records why rank fusion and cross-encoder reranking are *not* used when embeddings are available. Any OpenAI-compatible provider works: Google
 Gemini (free tier) is configured by default, OpenAI by changing a few variables.
 
 - **Frontend:** React + TypeScript + Vite (`frontend/`), built into the same Docker image and served by the API.
@@ -54,6 +56,15 @@ python -m pytest                       # API tests need MongoDB at TEST_MONGO_UR
 cd frontend && npm run lint && npm run typecheck && npm test
 ```
 
+## Measuring retrieval
+
+```bash
+python -m eval.runner                  # compares keyword / vector / fusion / reranked retrieval
+python -m eval.runner --configs keyword    # works without an AI provider
+```
+
+Results and method: **[eval/README.md](eval/README.md)**.
+
 ## API
 
 All `/api` routes except `/api/config` require a signed-in session cookie. Documents are only visible to their owner.
@@ -78,6 +89,8 @@ All `/api` routes except `/api/config` require a signed-in session cookie. Docum
 - Only PDFs with selectable text are indexed; scanned PDFs need OCR first.
 - Vectors are scored in the API process with NumPy, per document, which is fast up to the page limit. For search across
   many documents at once, move to Atlas Vector Search (vectors are already stored as BSON float32).
+- The evaluation set (51 questions over 39 synthetic pages) was written alongside the system it tests. It is a
+  regression check and a way to compare retrieval configurations, not evidence about PDFs in general.
 - Keyword retrieval (MongoDB text search, English stemming) doesn't segment Chinese, Japanese or Korean text; semantic
   retrieval still works for those languages.
 - Conversations are kept in the browser tab, not stored on the server.

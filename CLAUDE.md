@@ -27,6 +27,10 @@ npm run build                      # → frontend/dist, which FastAPI serves
 
 # Everything in containers (development mode, local-developer sign-in)
 docker compose up --build
+
+# Retrieval quality (indexes a synthetic corpus into <MONGO_DATABASE>_eval, drops it afterwards)
+python -m eval.runner                  # needs AI_API_KEY; embeddings are cached in eval/cache/
+python -m eval.runner --configs keyword --quiet   # no provider needed
 ```
 
 ## Architecture
@@ -80,6 +84,12 @@ and override settings via the `settings_overrides` fixture. Rate limits (`app/se
 **Config.** `app/config.py` is pydantic-settings; `get_settings()` is cached and validates production requirements
 (https URL, 32+ char `SESSION_SECRET`, Google and AI credentials, s3 storage, no dev login). Worker code calls
 `get_settings()` directly, so tests monkeypatch `app.queue.workers.get_settings`.
+
+**Retrieval order.** `semantic_first` keeps the vector ranking and appends keyword-only hits below it;
+`reciprocal_rank_fusion` still exists but is only used by `eval/` after it measured worse (MRR 0.84 vs 0.96).
+`should_rerank` decides whether the local cross-encoder runs: `RERANK_MODE=lexical-only` (default) reranks only when
+there is no query vector, because the small cross-encoder ranks worse than the embedding model but improves
+keyword-only retrieval. Change these only with an `eval` run to back it up, and update `eval/README.md`.
 
 **Summary and search.** `app/services/summarize.py` runs one pass when the text fits `SINGLE_PASS_CHARS` (much more
 detail) and otherwise map-reduces: section notes, then a final summary, capped at `MAX_ROUNDS`. Every passage carries

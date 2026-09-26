@@ -56,6 +56,16 @@ class Settings(BaseSettings):
     embedding_dimensions: int = Field(default=1024, ge=256, le=3072)
     retrieval_top_k: int = Field(default=6, ge=1, le=20)
 
+    # Local cross-encoder reranking (~110 MB, no API calls). Measured in eval/README.md: the small cross-encoder
+    # improves lexical-only retrieval but ranks worse than the embedding model when embeddings are available,
+    # so by default it runs only when there is no query vector. "always" and "never" are the other options.
+    rerank_mode: Literal["never", "lexical-only", "always"] = "lexical-only"
+    reranker_model: str = "Xenova/ms-marco-MiniLM-L-6-v2"
+    reranker_threads: int = Field(default=1, ge=1)
+    rerank_candidates: int = Field(default=20, ge=2, le=100)
+    rerank_max_chars: int = Field(default=2_000, ge=200)
+    model_cache_dir: Path = REPO_ROOT / ".runtime" / "models"
+
     max_upload_mb: int = Field(default=25, ge=1)
     max_pages: int = Field(default=500, ge=1)
     worker_timeout_seconds: int = Field(default=300, ge=30)

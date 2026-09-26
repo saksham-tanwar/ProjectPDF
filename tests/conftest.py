@@ -64,6 +64,8 @@ def settings(tmp_path, settings_overrides) -> Settings:
         upload_dir=tmp_path / "uploads",
         frontend_dist_dir=dist,
         dev_login_enabled=True,
+        rerank_mode="never",  # tests that want it enable it explicitly and inject a fake encoder
+        model_cache_dir=tmp_path / "models",
         max_upload_mb=1,
         rate_limit_questions_per_minute=5,
         _env_file=None,

@@ -21,6 +21,10 @@ RUN pip install -r requirements.txt \
     && adduser --system --group --no-create-home app \
     && mkdir -p /data/uploads \
     && chown app:app /data/uploads
+ENV MODEL_CACHE_DIR=/srv/.models
+RUN python -c "from fastembed.rerank.cross_encoder import TextCrossEncoder; \
+    TextCrossEncoder(model_name='Xenova/ms-marco-MiniLM-L-6-v2', cache_dir='/srv/.models')" \
+    && chown -R app:app /srv/.models
 COPY app ./app
 COPY --from=frontend /frontend/dist ./frontend/dist
 USER app
