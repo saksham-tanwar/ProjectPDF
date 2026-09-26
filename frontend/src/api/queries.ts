@@ -54,6 +54,17 @@ export function pollDelay(document: PaperDocument | undefined, updates: number):
   return Math.min(Math.round(1_500 * 1.25 ** updates), 10_000);
 }
 
+export function useSearch(id: string, query: string) {
+  const trimmed = query.trim();
+  return useQuery({
+    queryKey: [...keys.document(id), "search", trimmed] as const,
+    queryFn: () => api.search(id, trimmed),
+    enabled: trimmed.length > 1,
+    staleTime: 60_000,
+    placeholderData: (previous) => previous, // keep old hits visible while the next query runs
+  });
+}
+
 export function useDocument(id: string) {
   return useQuery({
     queryKey: keys.document(id),

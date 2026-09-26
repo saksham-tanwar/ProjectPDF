@@ -63,6 +63,8 @@ class Settings(BaseSettings):
     rate_limit_questions_per_minute: int = Field(default=20, ge=1)
     rate_limit_questions_per_day: int = Field(default=300, ge=1)
     rate_limit_uploads_per_hour: int = Field(default=20, ge=1)
+    rate_limit_searches_per_minute: int = Field(default=60, ge=1)
+    rate_limit_summaries_per_hour: int = Field(default=10, ge=1)
 
     cors_origins: str = ""
     frontend_dist_dir: Path = REPO_ROOT / "frontend" / "dist"

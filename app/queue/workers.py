@@ -6,7 +6,7 @@ from bson import ObjectId
 
 from app.config import get_settings
 from app.db.client import create_sync_client
-from app.services import ai
+from app.services import ai, summarize
 from app.services.storage import create_storage
 
 log = logging.getLogger(__name__)
@@ -72,6 +72,18 @@ def _mark_failed(file_id: str, message: str) -> None:
         client.close()
 
 
+def build_summary(rows: list[dict], settings, file_id: str) -> dict:
+    """A missing summary is a degraded document, not a failed one, so provider trouble never blocks the upload."""
+    if not settings.ai_enabled:
+        return {}
+    try:
+        result = summarize.summarize_document(rows, settings)
+    except ai.AIServiceError:
+        log.exception("Summarisation failed for document %s", file_id)
+        return {"summary": None, "key_points": [], "summary_error": "The summary could not be generated."}
+    return {**result, "summary_error": None, "summarized_at": datetime.now(timezone.utc)}
+
+
 def process_file(file_id: str) -> None:
     settings = get_settings()
     client = create_sync_client(settings)
@@ -101,6 +113,7 @@ def process_file(file_id: str) -> None:
             row.update(file_id=oid, owner_id=document["owner_id"])
         database.chunks.delete_many({"file_id": oid})
         database.chunks.insert_many(rows, ordered=False)
+        summary = build_summary(rows, settings, file_id)
         result = database.files.update_one(
             {"_id": oid},
             {"$set": {
@@ -108,6 +121,7 @@ def process_file(file_id: str) -> None:
                 "pages": page_count,
                 "chunk_count": len(rows),
                 "embedding_signature": embedding_signature,
+                **summary,
                 "processed_at": datetime.now(timezone.utc),
                 "updated_at": datetime.now(timezone.utc),
             }},

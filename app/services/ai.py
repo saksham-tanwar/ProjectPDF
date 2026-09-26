@@ -113,7 +113,7 @@ def chat_options(settings: Settings, max_tokens: int) -> dict:
     return options
 
 
-def _complete(messages: list[dict], settings: Settings, max_tokens: int, purpose: str) -> str:
+def complete(messages: list[dict], settings: Settings, max_tokens: int, purpose: str) -> str:
     try:
         response = client_for(settings).chat.completions.create(
             messages=messages, **chat_options(settings, max_tokens)
@@ -125,6 +125,9 @@ def _complete(messages: list[dict], settings: Settings, max_tokens: int, purpose
     if not text:
         reason = choice.finish_reason if choice else "no choices"
         raise AIServiceError(f"{purpose} returned no text (finish_reason={reason})")
+    if choice.finish_reason == "length":
+        # The reply was cut off mid-sentence: usually the token budget, which reasoning models also spend on thinking.
+        log.warning("%s hit the output limit of %s tokens and was truncated", purpose, max_tokens)
     return text
 
 
@@ -138,7 +141,7 @@ def standalone_question(question: str, history: list[dict], settings: Settings) 
         *_history_messages(history),
         {"role": "user", "content": question},
     ]
-    return _complete(messages, settings, settings.ai_max_output_tokens, "Question rewrite")[:1_000]
+    return complete(messages, settings, settings.ai_max_output_tokens, "Question rewrite")[:1_000]
 
 
 def generate_answer(question: str, history: list[dict], sources: list[dict], settings: Settings) -> str:
@@ -150,4 +153,4 @@ def generate_answer(question: str, history: list[dict], sources: list[dict], set
         *_history_messages(history),
         {"role": "user", "content": f"Document excerpts:\n\n{excerpts}\n\nQuestion: {question}"},
     ]
-    return _complete(messages, settings, settings.ai_max_output_tokens, "Answer generation")
+    return complete(messages, settings, settings.ai_max_output_tokens, "Answer generation")

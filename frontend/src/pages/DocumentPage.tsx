@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CircleAlert, MessagesSquare, RotateCw, Trash2 } from "lucide-react";
+import { CircleAlert, MessagesSquare, RotateCw, Search, Sparkles, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 
@@ -7,6 +7,8 @@ import { ApiError, api } from "../api/client";
 import { keys, useConfig, useDocument, useMe } from "../api/queries";
 import { isPending, type PaperDocument } from "../api/types";
 import { Composer, MessageList } from "../components/Chat";
+import { SearchPanel } from "../components/SearchPanel";
+import { SummaryPanel } from "../components/SummaryPanel";
 import { ConfirmDialog } from "../components/ConfirmDialog";
 import { Spinner } from "../components/Feedback";
 import { StatusBadge } from "../components/StatusBadge";
@@ -146,7 +148,57 @@ function FailedState({ document, onDelete }: { document: PaperDocument; onDelete
   );
 }
 
+const TABS = [
+  { id: "summary", label: "Summary", icon: Sparkles },
+  { id: "search", label: "Search", icon: Search },
+  { id: "chat", label: "Chat", icon: MessagesSquare },
+] as const;
+
+type TabId = (typeof TABS)[number]["id"];
+
 function ReadyState({ document }: { document: PaperDocument }) {
+  const [tab, setTab] = useState<TabId>("summary");
+
+  return (
+    <div className="tabbed">
+      <div className="tabs" role="tablist" aria-label="Document views">
+        {TABS.map(({ id, label, icon: Icon }) => (
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            id={`tab-${id}`}
+            aria-selected={tab === id}
+            aria-controls={`panel-${id}`}
+            className={`tab${tab === id ? " tab-active" : ""}`}
+            onClick={() => setTab(id)}
+          >
+            <Icon size={16} aria-hidden /> {label}
+          </button>
+        ))}
+      </div>
+
+      <div className="tab-panels">
+        {tab === "summary" && (
+          <div role="tabpanel" id="panel-summary" aria-labelledby="tab-summary" className="tab-panel">
+            <SummaryPanel document={document} />
+          </div>
+        )}
+        {tab === "search" && (
+          <div role="tabpanel" id="panel-search" aria-labelledby="tab-search" className="tab-panel">
+            <SearchPanel document={document} />
+          </div>
+        )}
+        {/* The chat stays mounted so switching tabs never drops an answer that is still coming back. */}
+        <div role="tabpanel" id="panel-chat" aria-labelledby="tab-chat" className="tab-panel" hidden={tab !== "chat"}>
+          <ChatTab document={document} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChatTab({ document }: { document: PaperDocument }) {
   const { data: user } = useMe();
   const config = useConfig();
   const conversation = useConversation(document.id);

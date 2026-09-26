@@ -24,6 +24,9 @@ export interface PaperDocument {
   pages: number | null;
   chunk_count: number | null;
   error: string | null;
+  summary: string | null;
+  key_points: string[];
+  summary_error: string | null;
   created_at: string;
   updated_at: string | null;
 }
@@ -31,6 +34,16 @@ export interface PaperDocument {
 export interface Source {
   page: number;
   text: string;
+}
+
+export interface SearchResult {
+  page: number;
+  text: string;
+}
+
+export interface DocumentSummary {
+  summary: string | null;
+  key_points: string[];
 }
 
 export interface ConversationTurn {

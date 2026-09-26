@@ -81,10 +81,19 @@ and override settings via the `settings_overrides` fixture. Rate limits (`app/se
 (https URL, 32+ char `SESSION_SECRET`, Google and AI credentials, s3 storage, no dev login). Worker code calls
 `get_settings()` directly, so tests monkeypatch `app.queue.workers.get_settings`.
 
+**Summary and search.** `app/services/summarize.py` runs one pass when the text fits `SINGLE_PASS_CHARS` (much more
+detail) and otherwise map-reduces: section notes, then a final summary, capped at `MAX_ROUNDS`. Every passage carries
+its own `[p. N]` marker so citations stay exact. Section notes use the full `ai_max_output_tokens`: a small cap is
+spent on reasoning tokens and truncates notes mid-sentence. `parse_key_points` splits the reply on `KEY POINTS:`.
+The worker stores `summary`/`key_points`/`summary_error`; a summary failure degrades the document but never fails it.
+`answering.search_passages` reuses hybrid retrieval with no generation call, behind `GET /api/documents/{id}/search`.
+
 **Frontend.** `frontend/src/api/client.ts` wraps fetch (cookies included, tolerant of non-JSON error bodies) and uses
 XHR for upload progress; `VITE_API_BASE_URL` is empty for same-origin. Each question sends the last 6 completed turns
 as `history` (`historyFor`). TanStack Query hooks in `api/queries.ts` poll
-document status with backoff and reset `me` to `null` on any 401, which sends `RequireAuth` to `/login`. Conversations
+document status with backoff and reset `me` to `null` on any 401, which sends `RequireAuth` to `/login`.
+`DocumentPage` shows Summary / Search / Chat tabs; the chat panel stays mounted (hidden) so switching tabs never drops
+an answer in flight. `SearchPanel.highlight` marks whole words only, skipping stop words, and never uses innerHTML. Conversations
 live in `sessionStorage` per document (`lib/useConversation.ts`); the server stores no chat history. `DocumentPage`
 renders `DocumentView` with `key={id}` so local state resets between documents. eslint-plugin-react-hooks v7 rules are
 on — avoid `setState` inside effects.

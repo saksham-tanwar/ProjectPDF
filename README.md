@@ -1,10 +1,17 @@
 # Paperchat
 
-Paperchat is a retrieval-augmented generation (RAG) app: people sign in with Google, upload text-based PDFs and ask
-questions. Each PDF is split into passages and embedded; each question retrieves the most relevant passages (semantic
-vector search fused with keyword search) and an LLM writes an answer citing the pages it used. Any OpenAI-compatible
-provider works: Google Gemini (free tier) is configured by default, OpenAI by changing a few variables.
-Follow-up questions are rewritten using the conversation so references like "the second one" resolve correctly.
+Paperchat is a retrieval-augmented generation (RAG) app for PDFs. Sign in with Google, upload a text-based PDF, and
+get three things:
+
+- **Summary** — an overview and key points with page references, generated automatically after upload (one pass for
+  documents that fit the model's context, hierarchical map-reduce for longer ones) and regenerable on demand.
+- **Search** — type a phrase and get the passages that match by meaning as well as by wording, with page numbers and
+  highlighted terms. No model call at answer time, so it is instant and costs nothing.
+- **Chat** — ask questions and get an answer citing the pages it used; follow-ups are rewritten using the conversation
+  so references like "the second one" resolve correctly.
+
+Retrieval fuses semantic vector search with MongoDB keyword search. Any OpenAI-compatible provider works: Google
+Gemini (free tier) is configured by default, OpenAI by changing a few variables.
 
 - **Frontend:** React + TypeScript + Vite (`frontend/`), built into the same Docker image and served by the API.
 - **API:** FastAPI (`app/`) with Google sign-in, server-side sessions, per-user documents and rate limits.
@@ -58,6 +65,8 @@ All `/api` routes except `/api/config` require a signed-in session cookie. Docum
 | GET | `/api/documents` | List your documents |
 | POST | `/api/documents` | Upload a PDF (multipart `file`), returns 202 and processes in the background |
 | GET | `/api/documents/{id}` | Status and metadata |
+| GET | `/api/documents/{id}/search` | `?q=...&limit=10` → ranked passages with page numbers, no answer generated |
+| POST | `/api/documents/{id}/summary` | Regenerate the summary → `{ summary, key_points }` |
 | POST | `/api/documents/{id}/questions` | `{ "question": "...", "history": [{ "role", "content" }] }` → answer, sources, mode (`llm`, `extractive` fallback, `none`) |
 | DELETE | `/api/documents/{id}` | Delete PDF, extracted text and metadata |
 | GET | `/auth/google/login`, `/auth/google/callback` | Google sign-in |

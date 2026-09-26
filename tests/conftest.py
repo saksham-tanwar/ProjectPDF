@@ -1,15 +1,19 @@
 import io
 import os
+import re
 import uuid
+import zlib
 
 os.environ.setdefault("APP_ENV", "test")
 
 import fakeredis
+import numpy as np
 import pytest
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
 from app.config import Settings
+from app.services import ai
 
 TEST_MONGO_URL = os.environ.get("TEST_MONGO_URL", "mongodb://localhost:27017")
 
@@ -93,3 +97,87 @@ def client(settings, mongo_available, monkeypatch):
     mongo = MongoClient(settings.mongo_url)
     mongo.drop_database(settings.mongo_database)
     mongo.close()
+
+
+# Words in the same group share a dimension, so "guarantee" is semantically close to "warranty"
+# without the two sharing any keyword.
+CONCEPTS = [
+    {"warranty", "guarantee", "guaranteed", "defects", "coverage", "covered", "covers"},
+    {"return", "returns", "refund", "refunds", "money", "back"},
+    {"descale", "descaling", "limescale", "cleaning", "clean", "maintenance"},
+]
+
+MANUAL = make_pdf([
+    "Warranty\nNorthwind covers manufacturing defects for two years from purchase.",
+    "Returns\nUnused products can be sent back within thirty days for a refund.",
+    "Care\nDescale the machine every eight weeks to prevent limescale.",
+])
+
+
+def fake_embed(texts, settings):
+    vectors = np.zeros((len(texts), settings.embedding_dimensions), dtype=np.float32)
+    for row, text in enumerate(texts):
+        for word in re.findall(r"[a-z]+", text.lower()):
+            concept = next((index for index, group in enumerate(CONCEPTS) if word in group), None)
+            if concept is not None:
+                vectors[row, concept] += 3.0
+            else:
+                vectors[row, 10 + zlib.crc32(word.encode()) % (settings.embedding_dimensions - 10)] += 0.2
+    norms = np.linalg.norm(vectors, axis=1, keepdims=True)
+    return vectors / np.where(norms == 0, 1, norms)
+
+
+class FakeAI:
+    def __init__(self):
+        self.answer_calls = []
+        self.rewrite_calls = []
+        self.complete_calls = []
+        self.fail_answers = False
+        self.fail_embeddings = False
+        self.fail_completions = False
+
+    def embed_texts(self, texts, settings):
+        if self.fail_embeddings:
+            raise ai.AIServiceError("boom")
+        return fake_embed(texts, settings)
+
+    def standalone_question(self, question, history, settings):
+        self.rewrite_calls.append((question, history))
+        return "How do refunds work?"
+
+    def generate_answer(self, question, history, sources, settings):
+        if self.fail_answers:
+            raise ai.AIServiceError("boom")
+        self.answer_calls.append({"question": question, "history": history, "sources": sources})
+        return f"Generated answer [p. {sources[0]['page']}]"
+
+    def complete(self, messages, settings, max_tokens, purpose):
+        """Stands in for summarisation: echoes how much text it was given so tests can check map-reduce."""
+        if self.fail_completions:
+            raise ai.AIServiceError("boom")
+        self.complete_calls.append({"purpose": purpose, "content": messages[-1]["content"], "max_tokens": max_tokens})
+        if purpose == "Section summary":
+            return f"[section note {len(self.complete_calls)}]"
+        return (
+            "This manual explains the warranty, returns and care for the Northwind machine.\n"
+            "KEY POINTS:\n"
+            "• Manufacturing defects are covered for two years [p. 1]\n"
+            "• Unused products can be returned within thirty days [p. 2]\n"
+        )
+
+
+MANUAL = make_pdf([
+    "Warranty\nNorthwind covers manufacturing defects for two years from purchase.",
+    "Returns\nUnused products can be sent back within thirty days for a refund.",
+    "Care\nDescale the machine every eight weeks to prevent limescale.",
+])
+
+
+@pytest.fixture
+def fake_ai(monkeypatch):
+    fake = FakeAI()
+    monkeypatch.setattr(ai, "embed_texts", fake.embed_texts)
+    monkeypatch.setattr(ai, "standalone_question", fake.standalone_question)
+    monkeypatch.setattr(ai, "generate_answer", fake.generate_answer)
+    monkeypatch.setattr(ai, "complete", fake.complete)
+    return fake

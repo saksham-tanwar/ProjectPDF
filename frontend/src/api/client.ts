@@ -1,4 +1,12 @@
-import type { Answer, ConversationTurn, PaperDocument, PublicConfig, User } from "./types";
+import type {
+  Answer,
+  ConversationTurn,
+  DocumentSummary,
+  PaperDocument,
+  PublicConfig,
+  SearchResult,
+  User,
+} from "./types";
 
 /** Empty by default: the app is served from the same origin as the API. */
 export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
@@ -87,6 +95,12 @@ export const api = {
   deleteDocument: (id: string) => request<null>(documentPath(id), send("DELETE")),
   ask: (id: string, question: string, history: ConversationTurn[] = []) =>
     request<Answer>(`${documentPath(id)}/questions`, send("POST", { question, history })),
+
+  search: (id: string, query: string, limit = 10) =>
+    request<{ query: string; results: SearchResult[] }>(
+      `${documentPath(id)}/search?q=${encodeURIComponent(query)}&limit=${limit}`,
+    ).then((body) => body.results),
+  regenerateSummary: (id: string) => request<DocumentSummary>(`${documentPath(id)}/summary`, send("POST")),
 
   /** Uses XHR rather than fetch so the UI can show real upload progress. */
   uploadDocument(file: File, onProgress: (fraction: number) => void, signal?: AbortSignal): Promise<PaperDocument> {

@@ -70,6 +70,25 @@ async def retrieve_chunks(
     return [{"page": by_id[item]["page"], "text": by_id[item]["text"]} for item in ranked[:limit]]
 
 
+async def query_vector_for(document: dict, query: str, settings: Settings) -> np.ndarray | None:
+    """Embeds the query when this document's vectors match the current model; otherwise keyword-only."""
+    if not (settings.ai_enabled and document.get("embedding_signature") == ai.embedding_signature(settings)):
+        return None
+    try:
+        return await run_in_threadpool(ai.embed_query, query, settings)
+    except ai.AIServiceError:
+        log.exception("Query embedding failed; falling back to keyword search")
+        return None
+
+
+async def search_passages(
+    chunks: AsyncCollection, document: dict, query: str, settings: Settings, limit: int = 10
+) -> list[dict]:
+    """Ranked passages for in-document search. No answer is generated, so this stays fast and free."""
+    vector = await query_vector_for(document, query, settings)
+    return await retrieve_chunks(chunks, document["_id"], query, vector, limit)
+
+
 def excerpts_answer(sources: list[dict], preface: str) -> str:
     excerpts = "\n\n".join(f"Page {source['page']}: {source['text']}" for source in sources[:3])
     return f"{preface}\n\n{excerpts}"

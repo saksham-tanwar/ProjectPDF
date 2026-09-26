@@ -5,7 +5,7 @@ from pathlib import PureWindowsPath
 from typing import Literal
 
 from bson import ObjectId
-from fastapi import APIRouter, Depends, File, HTTPException, Response, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel, Field
 from pymongo.asynchronous.database import AsyncDatabase
@@ -15,8 +15,8 @@ from rq import Queue
 from app.config import Settings
 from app.deps import current_user, get_db, get_queue, get_redis, get_settings, get_storage
 from app.queue.q import enqueue_processing
-from app.services import ratelimit
-from app.services import answering
+from app.services import answering, ratelimit, summarize
+from app.services.ai import AIServiceError
 from app.services.auth import clear_session_cookie, public_user
 from app.services.storage import Storage
 
@@ -60,6 +60,9 @@ def serialize(document: dict) -> dict:
         "pages": document.get("pages"),
         "chunk_count": document.get("chunk_count"),
         "error": document.get("error"),
+        "summary": document.get("summary"),
+        "key_points": document.get("key_points") or [],
+        "summary_error": document.get("summary_error"),
         "created_at": document["created_at"],
         "updated_at": document.get("updated_at"),
     }
@@ -238,6 +241,63 @@ async def ask_question(
         raise HTTPException(422, "Please enter a question.")
     history = [turn.model_dump() for turn in payload.history[-6:]]
     return await answering.answer(db.chunks, document, question, history, settings)
+
+
+@router.get("/documents/{file_id}/search")
+async def search_document(
+    file_id: str,
+    q: str = Query(min_length=1, max_length=500),
+    limit: int = Query(default=10, ge=1, le=30),
+    user: dict = Depends(current_user),
+    db: AsyncDatabase = Depends(get_db),
+    redis: Redis = Depends(get_redis),
+    settings: Settings = Depends(get_settings),
+):
+    """Passage search with no model call on the generation side: instant and free to run."""
+    document = await owned_document(db, file_id, user)
+    if document["status"] != "ready":
+        raise HTTPException(409, "This document isn't ready yet.")
+    await ratelimit.enforce(
+        redis, "search", str(user["_id"]), settings.rate_limit_searches_per_minute, 60,
+        "You're searching very quickly. Please wait a moment and try again.",
+    )
+    results = await answering.search_passages(db.chunks, document, q.strip(), settings, limit)
+    return {"query": q.strip(), "results": results}
+
+
+@router.post("/documents/{file_id}/summary")
+async def regenerate_summary(
+    file_id: str,
+    user: dict = Depends(current_user),
+    db: AsyncDatabase = Depends(get_db),
+    redis: Redis = Depends(get_redis),
+    settings: Settings = Depends(get_settings),
+):
+    document = await owned_document(db, file_id, user)
+    if document["status"] != "ready":
+        raise HTTPException(409, "This document isn't ready yet.")
+    if not settings.ai_enabled:
+        raise HTTPException(503, "AI summaries aren't configured on this server.")
+    await ratelimit.enforce(
+        redis, "summaries", str(user["_id"]), settings.rate_limit_summaries_per_hour, 3_600,
+        "You've regenerated a lot of summaries recently. Please try again later.",
+    )
+    chunks = await db.chunks.find(
+        {"file_id": document["_id"]}, {"page": 1, "text": 1}
+    ).sort([("page", 1), ("index", 1)]).to_list(length=None)
+    if not chunks:
+        raise HTTPException(409, "This document has no indexed text.")
+    try:
+        result = await run_in_threadpool(summarize.summarize_document, chunks, settings)
+    except AIServiceError:
+        log.exception("Summary regeneration failed for %s", file_id)
+        raise HTTPException(503, "The summary service is unavailable right now. Please try again.")
+    await db.files.update_one(
+        {"_id": document["_id"]},
+        {"$set": {**result, "summary_error": None, "summarized_at": datetime.now(timezone.utc),
+                  "updated_at": datetime.now(timezone.utc)}},
+    )
+    return result
 
 
 @router.delete("/documents/{file_id}", status_code=204)
