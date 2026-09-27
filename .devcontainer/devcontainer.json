@@ -1,9 +1,14 @@
 {
-    "name": "Cohort Dev Env",
+    "name": "Paperchat",
     "dockerComposeFile": "docker-compose.yaml",
     "service": "app",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "remoteUser": "root",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+    },
+    "forwardPorts": [8000, 5173],
+    "postCreateCommand": "pip install -r requirements-dev.txt && npm --prefix frontend ci",
     "customizations": {
         "vscode": {
             "extensions": [

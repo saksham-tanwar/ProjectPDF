@@ -1,0 +1,63 @@
+# Full stack on one machine for local testing: `docker compose up --build`, then open http://localhost:8000.
+# Runs in development mode with the local-developer sign-in and local disk storage.
+# Production runs on Render (see render.yaml and docs/DEPLOYMENT.md), not from this file.
+
+x-app: &app
+  build: .
+  restart: unless-stopped
+  env_file:
+    - path: .env
+      required: false
+  environment:
+    APP_ENV: development
+    DEV_LOGIN_ENABLED: "true"
+    PUBLIC_BASE_URL: http://localhost:8000
+    MONGO_URL: mongodb://mongo:27017
+    REDIS_URL: redis://valkey:6379/0
+    STORAGE_BACKEND: local
+    UPLOAD_DIR: /data/uploads
+  volumes:
+    - uploads:/data/uploads
+  depends_on:
+    mongo: {condition: service_healthy}
+    valkey: {condition: service_healthy}
+
+services:
+  mongo:
+    image: mongo:8
+    restart: unless-stopped
+    volumes: [mongodb_data:/data/db]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  valkey:
+    image: valkey/valkey:8-alpine
+    restart: unless-stopped
+    command: valkey-server --appendonly yes --maxmemory-policy noeviction
+    volumes: [valkey_data:/data]
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    <<: *app
+    ports: ["8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz')"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
+  worker:
+    <<: *app
+    command: ["python", "-m", "app.worker"]
+
+volumes:
+  mongodb_data:
+  valkey_data:
+  uploads:

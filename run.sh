@@ -1,3 +1,3 @@
 #!/bin/bash
-
-uvicorn app.server:app --host 0.0.0.0 --port 8000 --reload
+# Development server with auto-reload. Needs MongoDB and Redis/Valkey (see README).
+exec python -m app.main

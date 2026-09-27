@@ -1,0 +1,7720 @@
+{
+  "k": 5,
+  "questions": 51,
+  "configs": {
+    "keyword": {
+      "overall": {
+        "hit_rate": 0.7254901960784313,
+        "mrr": 0.6666666666666666,
+        "ndcg": 0.6814537720953169,
+        "precision": 0.3460784313725489
+      },
+      "paraphrased": {
+        "hit_rate": 0.625,
+        "mrr": 0.5703125,
+        "ndcg": 0.5841417520380097,
+        "precision": 0.3109375
+      },
+      "same_wording": {
+        "hit_rate": 0.8947368421052632,
+        "mrr": 0.8289473684210527,
+        "ndcg": 0.8453477006128869,
+        "precision": 0.4052631578947369
+      },
+      "median_ms": 2.0168000000921893,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            3,
+            4,
+            1,
+            10
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            1,
+            13,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            2,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            10,
+            4,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            2,
+            8
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            6,
+            14,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            14
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            5,
+            4,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            8,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            4,
+            7,
+            11,
+            6,
+            8
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            7,
+            1,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            4
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            2
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            4,
+            7,
+            1,
+            8,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            6,
+            9,
+            5,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            6,
+            4,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            6,
+            9,
+            5,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            3,
+            4,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            1,
+            11,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            7,
+            6,
+            10,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.25
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            2,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            1,
+            11,
+            9,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            12,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        }
+      ]
+    },
+    "vector": {
+      "overall": {
+        "hit_rate": 1.0,
+        "mrr": 0.957516339869281,
+        "ndcg": 0.9684860639355759,
+        "precision": 0.19999999999999993
+      },
+      "paraphrased": {
+        "hit_rate": 1.0,
+        "mrr": 0.9479166666666666,
+        "ndcg": 0.9613081095982161,
+        "precision": 0.2000000000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9736842105263158,
+        "ndcg": 0.9805752501879714,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 2.621000000544882,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            13,
+            10,
+            12,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            13,
+            11,
+            10,
+            2,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            13,
+            11,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            13,
+            11,
+            10,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            11,
+            4,
+            2,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            10,
+            12,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            8,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            3,
+            13,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            6,
+            2,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            14,
+            8,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            4,
+            15,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            14,
+            2,
+            4,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            5,
+            15,
+            8,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            15,
+            5,
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            9,
+            6,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            13,
+            5,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            6,
+            2,
+            4,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            2,
+            10,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            13,
+            2,
+            12,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            7,
+            4,
+            14,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            4,
+            3,
+            2,
+            11,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            11,
+            4,
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            8,
+            3,
+            12,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            11,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            8,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            2,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            2,
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            2,
+            3,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            6,
+            5,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            2,
+            4,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            5,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            6,
+            8,
+            10,
+            5,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            6,
+            5,
+            4,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            4,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            2,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            2,
+            8,
+            11,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            10,
+            3,
+            9,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            7,
+            6,
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            5,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            6,
+            5,
+            10,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            9,
+            2,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            10,
+            9,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            12,
+            3,
+            10,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            12,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            3,
+            10,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            1,
+            4,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            12,
+            5,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    },
+    "hybrid": {
+      "overall": {
+        "hit_rate": 0.9803921568627451,
+        "mrr": 0.8415032679738562,
+        "ndcg": 0.8766379990043213,
+        "precision": 0.19607843137254896
+      },
+      "paraphrased": {
+        "hit_rate": 0.96875,
+        "mrr": 0.7838541666666667,
+        "ndcg": 0.830550256114029,
+        "precision": 0.1937500000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9385964912280701,
+        "ndcg": 0.9542594607142872,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 4.273599999578437,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            10,
+            4,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9,
+            13,
+            11,
+            10,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            13,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            2,
+            3,
+            4,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            10,
+            12,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            3,
+            11,
+            4,
+            9,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            3,
+            13,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            2,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            14,
+            8,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            4,
+            10,
+            15,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            15,
+            14,
+            2,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            5,
+            3,
+            8,
+            9,
+            2
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            15,
+            5,
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            6,
+            9,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            13,
+            5,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            14,
+            15,
+            6,
+            2,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            2,
+            10,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            5,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            7,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            4,
+            11,
+            3,
+            7,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            4,
+            11,
+            1,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3,
+            4,
+            8,
+            12,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            11,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            4,
+            12,
+            5,
+            8,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            2,
+            7,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            3,
+            2,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            2,
+            11,
+            10,
+            9,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            6,
+            5,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            4,
+            3,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            5,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            7,
+            6,
+            8,
+            10,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            6,
+            5,
+            8,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            4,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            3,
+            2,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            2,
+            8,
+            11,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            10,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            7,
+            5,
+            6,
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            5,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            2,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9,
+            8,
+            2,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            10,
+            9,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            12,
+            3,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            12,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            12,
+            1,
+            4,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            1,
+            4,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            12,
+            7,
+            3,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    },
+    "semantic-first": {
+      "overall": {
+        "hit_rate": 1.0,
+        "mrr": 0.957516339869281,
+        "ndcg": 0.9684860639355759,
+        "precision": 0.19999999999999993
+      },
+      "paraphrased": {
+        "hit_rate": 1.0,
+        "mrr": 0.9479166666666666,
+        "ndcg": 0.9613081095982161,
+        "precision": 0.2000000000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9736842105263158,
+        "ndcg": 0.9805752501879714,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 3.0288999996628263,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            13,
+            10,
+            12,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            13,
+            11,
+            10,
+            2,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            13,
+            11,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            13,
+            11,
+            10,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            11,
+            4,
+            2,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            10,
+            12,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            8,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            3,
+            13,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            6,
+            2,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            14,
+            8,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            4,
+            15,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            14,
+            2,
+            4,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            5,
+            15,
+            8,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            15,
+            5,
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            9,
+            6,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            13,
+            5,
+            6,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            6,
+            2,
+            4,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            2,
+            10,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            13,
+            2,
+            12,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            7,
+            4,
+            14,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            4,
+            3,
+            2,
+            11,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            11,
+            4,
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            8,
+            3,
+            12,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            11,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            8,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            2,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            2,
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            2,
+            3,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            6,
+            5,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            2,
+            4,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            5,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            6,
+            8,
+            10,
+            5,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            6,
+            5,
+            4,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            4,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            8,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            2,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            2,
+            8,
+            11,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            10,
+            3,
+            9,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            7,
+            6,
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            5,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            6,
+            5,
+            10,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            9,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            9,
+            2,
+            11,
+            5
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            10,
+            9,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            12,
+            3,
+            10,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            12,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            3,
+            10,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            1,
+            4,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            12,
+            5,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    },
+    "keyword+rerank": {
+      "overall": {
+        "hit_rate": 0.7647058823529411,
+        "mrr": 0.7124183006535947,
+        "ndcg": 0.7259552747899183,
+        "precision": 0.35392156862745083
+      },
+      "paraphrased": {
+        "hit_rate": 0.6875,
+        "mrr": 0.6041666666666666,
+        "ndcg": 0.6257412191964322,
+        "precision": 0.3234375
+      },
+      "same_wording": {
+        "hit_rate": 0.8947368421052632,
+        "mrr": 0.8947368421052632,
+        "ndcg": 0.8947368421052632,
+        "precision": 0.4052631578947369
+      },
+      "median_ms": 76.92450000013196,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            4,
+            11,
+            13,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            11,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            3,
+            4,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            11,
+            4,
+            3
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            7,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            15,
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            3,
+            5,
+            9,
+            14,
+            4
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            9,
+            14,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            14
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            7,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            8,
+            3,
+            6,
+            11,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            1,
+            4,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            4
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            2
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            12,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            4,
+            3,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            6,
+            11,
+            9,
+            5,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            3,
+            4,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            2,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            10,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            10,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.3333333333333333
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9
+          ],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [],
+          "hit_rate": 0.0,
+          "mrr": 0.0,
+          "ndcg": 0.0,
+          "precision": 0.0
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            1,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 1.0
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.5
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            7,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.25
+        }
+      ]
+    },
+    "vector+rerank": {
+      "overall": {
+        "hit_rate": 1.0,
+        "mrr": 0.8676470588235294,
+        "ndcg": 0.9015316585616677,
+        "precision": 0.19999999999999993
+      },
+      "paraphrased": {
+        "hit_rate": 1.0,
+        "mrr": 0.8046874999999999,
+        "ndcg": 0.8545995260335499,
+        "precision": 0.2000000000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9736842105263158,
+        "ndcg": 0.9805752501879714,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 432.1650000001682,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            4,
+            11,
+            13,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9,
+            11,
+            2,
+            10,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            11,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            15,
+            6,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            12,
+            14,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            11,
+            9,
+            4,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            7,
+            15,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            6,
+            8,
+            3,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            15,
+            10,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            14,
+            5,
+            15,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            3,
+            5,
+            9,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            2,
+            7,
+            8,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            9,
+            14,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            7,
+            6,
+            15,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            7,
+            6,
+            14,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            10,
+            8,
+            7,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            7,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            8,
+            3,
+            6,
+            11,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            1,
+            4,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3,
+            12,
+            4,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            8,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            4,
+            1,
+            6,
+            7,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            12,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            2,
+            5,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            4,
+            3,
+            12,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            2,
+            6,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            7,
+            6,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            6,
+            11,
+            9,
+            5,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            12,
+            8,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            4,
+            7,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            3,
+            4,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            11,
+            2,
+            8,
+            4,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            10,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            10,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            5,
+            7,
+            6,
+            8,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            6,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            10,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9,
+            8,
+            5,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            9,
+            5,
+            10,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            4,
+            7,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            1,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            1,
+            7,
+            5,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            5,
+            7,
+            12,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    },
+    "hybrid+rerank": {
+      "overall": {
+        "hit_rate": 1.0,
+        "mrr": 0.8676470588235294,
+        "ndcg": 0.9015316585616677,
+        "precision": 0.19999999999999993
+      },
+      "paraphrased": {
+        "hit_rate": 1.0,
+        "mrr": 0.8046874999999999,
+        "ndcg": 0.8545995260335499,
+        "precision": 0.2000000000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9736842105263158,
+        "ndcg": 0.9805752501879714,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 469.28200000002107,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            4,
+            11,
+            13,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9,
+            11,
+            2,
+            10,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            11,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            15,
+            6,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            12,
+            14,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            11,
+            9,
+            4,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            7,
+            15,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            6,
+            8,
+            3,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            15,
+            10,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            14,
+            5,
+            15,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            3,
+            5,
+            9,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            2,
+            7,
+            8,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            9,
+            14,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            7,
+            6,
+            15,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            7,
+            6,
+            14,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            10,
+            8,
+            7,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            7,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            8,
+            3,
+            6,
+            11,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            1,
+            4,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3,
+            12,
+            4,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            8,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            4,
+            1,
+            6,
+            7,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            12,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            2,
+            5,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            4,
+            3,
+            12,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            2,
+            6,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            7,
+            6,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            6,
+            11,
+            9,
+            5,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            12,
+            8,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            4,
+            7,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            3,
+            4,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            11,
+            2,
+            8,
+            4,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            10,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            10,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            5,
+            7,
+            6,
+            8,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            6,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            10,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9,
+            8,
+            5,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            9,
+            5,
+            10,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            4,
+            7,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            1,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            1,
+            7,
+            5,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            5,
+            7,
+            12,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    },
+    "semantic-first+rerank": {
+      "overall": {
+        "hit_rate": 1.0,
+        "mrr": 0.8676470588235294,
+        "ndcg": 0.9015316585616677,
+        "precision": 0.19999999999999993
+      },
+      "paraphrased": {
+        "hit_rate": 1.0,
+        "mrr": 0.8046874999999999,
+        "ndcg": 0.8545995260335499,
+        "precision": 0.2000000000000001
+      },
+      "same_wording": {
+        "hit_rate": 1.0,
+        "mrr": 0.9736842105263158,
+        "ndcg": 0.9805752501879714,
+        "precision": 0.20000000000000007
+      },
+      "median_ms": 445.9415999999692,
+      "questions": [
+        {
+          "question": "How long is the machine guaranteed for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            4,
+            11,
+            13,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "What voids the warranty?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            9,
+            11,
+            2,
+            10,
+            13
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How long are the spare baskets covered for?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            11,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I get my money back if I change my mind?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            15,
+            6,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Who pays postage when sending a machine back?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            4,
+            2,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What happens if a local shop repairs it?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            13
+          ],
+          "retrieved": [
+            13,
+            11,
+            12,
+            14,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How often should I remove limescale?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            11,
+            9,
+            4,
+            13,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why should I avoid vinegar?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            7,
+            15,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I use distilled water?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            9,
+            3,
+            6,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "My coffee tastes sour and pours too quickly.",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            6,
+            8,
+            3,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much coffee goes in a double basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            15,
+            10,
+            6,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why is there no pressure when frothing?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            14,
+            5,
+            15,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How hot does the water get and how long does it take?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            3,
+            5,
+            9,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is it safe around young children?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            2,
+            7,
+            8,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Nothing comes out of the group head, what do I do?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            9,
+            14,
+            6,
+            3,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "What does a blinking orange light mean?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            14
+          ],
+          "retrieved": [
+            14,
+            7,
+            6,
+            15,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How loud is it and how much does it weigh?",
+          "document": "northwind-manual",
+          "keyword_friendly": false,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            7,
+            6,
+            14,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is in the box?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            10,
+            8,
+            7,
+            14
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What email address do I use for a claim?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            11,
+            2,
+            7,
+            6,
+            15
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What size tamper fits?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            4,
+            15,
+            7,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the pump pressure at the basket?",
+          "document": "northwind-manual",
+          "keyword_friendly": true,
+          "expected": [
+            15
+          ],
+          "retrieved": [
+            15,
+            10,
+            14,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How long must I work here before working from home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            8,
+            3,
+            6,
+            11,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Which staff cannot work remotely full time?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            3
+          ],
+          "retrieved": [
+            3,
+            1,
+            4,
+            7,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What if my manager says no?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            3,
+            12,
+            4,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "Is there money for a desk and chair?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            6,
+            9,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I have to give the money back if I quit?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            5,
+            8,
+            4,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "When am I expected to be online?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            4,
+            1,
+            6,
+            7,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.25,
+          "ndcg": 0.43067655807339306,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I spend a month working from Spain?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            4,
+            12,
+            3,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Will the company pay my internet bill?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            2,
+            5,
+            11,
+            10
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I claim the cost of a shared office?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            5,
+            6,
+            12,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Is my commute to head office claimable?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            4,
+            3,
+            12,
+            6
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What should I do if I think data has leaked?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            2,
+            6,
+            4,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Can I keep files in my own Dropbox?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            7,
+            6,
+            4,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Do I need a desk assessment at home?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            6,
+            11,
+            9,
+            5,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "How do I book a seat when I come in?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            6,
+            7,
+            12,
+            8,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is the address for reporting a breach?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            11,
+            4,
+            7,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many working days abroad are allowed?",
+          "document": "aurora-remote-policy",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            3,
+            4,
+            7,
+            12
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How much cooler are leafy neighbourhoods?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            2
+          ],
+          "retrieved": [
+            11,
+            2,
+            8,
+            4,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Why did they leave out cities by the sea?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            4
+          ],
+          "retrieved": [
+            4,
+            9,
+            10,
+            3,
+            1
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How high were the sensors placed?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            10,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How did they check the instruments were accurate?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            6
+          ],
+          "retrieved": [
+            5,
+            7,
+            6,
+            8,
+            9
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.3333333333333333,
+          "ndcg": 0.5,
+          "precision": 0.2
+        },
+        {
+          "question": "How were broken readings handled?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            6,
+            8,
+            2
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "How many observations were kept?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            7
+          ],
+          "retrieved": [
+            7,
+            5,
+            4,
+            10,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "At what time of day does shade help most?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            9,
+            8,
+            5,
+            2,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Does light-coloured pavement help?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            8
+          ],
+          "retrieved": [
+            8,
+            9,
+            5,
+            10,
+            7
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Was the effect the same in smaller, sparser towns?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            9
+          ],
+          "retrieved": [
+            9,
+            8,
+            3,
+            4,
+            11
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "Why might these findings not apply in Dubai?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            10
+          ],
+          "retrieved": [
+            10,
+            9,
+            4,
+            7,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What do the authors advise city planners to do?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": false,
+          "expected": [
+            11
+          ],
+          "retrieved": [
+            12,
+            11,
+            1,
+            9,
+            4
+          ],
+          "hit_rate": 1.0,
+          "mrr": 0.5,
+          "ndcg": 0.6309297535714575,
+          "precision": 0.2
+        },
+        {
+          "question": "Who paid for the research?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            12
+          ],
+          "retrieved": [
+            12,
+            1,
+            7,
+            5,
+            3
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What resolution was the aerial imagery?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            5
+          ],
+          "retrieved": [
+            5,
+            3,
+            7,
+            6,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        },
+        {
+          "question": "What is working paper 2025-04 called?",
+          "document": "lakeside-heat-study",
+          "keyword_friendly": true,
+          "expected": [
+            1
+          ],
+          "retrieved": [
+            1,
+            5,
+            7,
+            12,
+            8
+          ],
+          "hit_rate": 1.0,
+          "mrr": 1.0,
+          "ndcg": 1.0,
+          "precision": 0.2
+        }
+      ]
+    }
+  },
+  "settings": {
+    "semantic_weight": 1.0,
+    "embedding_model": "gemini-embedding-001",
+    "embedding_dimensions": 768,
+    "reranker_model": "Xenova/ms-marco-MiniLM-L-6-v2",
+    "rerank_mode": "lexical-only",
+    "rerank_candidates": 20
+  }
+}

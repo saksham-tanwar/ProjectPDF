@@ -6,24 +6,23 @@ services:
     volumes:
       - ../..:/workspaces:cached
     command: sleep infinity
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      REDIS_URL: redis://valkey:6379/0
+      TEST_MONGO_URL: mongodb://mongo:27017
 
   mongo:
-    image: mongo
+    image: mongo:8
     restart: always
-    ports:
-      - '27017:27017'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
     volumes:
       - mongodb_data:/data/db
 
   valkey:
-    image: valkey/valkey:latest
-    ports:
-      - "6379:6379"
+    image: valkey/valkey:8-alpine
+    restart: always
+    command: valkey-server --appendonly yes --maxmemory-policy noeviction
     volumes:
-      - valkey_data:/usr/local/etc/valkey
+      - valkey_data:/data
 
 volumes:
   mongodb_data:
