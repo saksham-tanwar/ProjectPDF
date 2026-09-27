@@ -114,7 +114,9 @@ immutable static files.
 
 ## Deployment notes
 
-- One `Dockerfile` (node build stage → python runtime) for both Render services; the worker's `dockerCommand` is
-  `python -m app.worker`. The image defaults to `APP_ENV=production`.
+- One `Dockerfile` (node build stage → python runtime) for both roles. The image defaults to `APP_ENV=production`.
+- `RUN_WORKER_IN_WEB=true` starts the RQ worker in a daemon thread from the web lifespan (`app/worker.py:
+  start_in_thread`, `InProcessWorker` — no signal handlers, timer-based timeouts). That is what `render.yaml` uses,
+  since Render's free tier has no background workers; the separate worker service is commented out there.
 - Render Key Value must use `maxmemoryPolicy: noeviction` so queued jobs aren't evicted.
 - `docker-compose.yml` is for local full-stack testing only (development mode).

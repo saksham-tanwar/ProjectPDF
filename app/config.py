@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     public_base_url: str = "http://localhost:8000"
     port: int = 8000
     web_concurrency: int = Field(default=1, ge=1)
+    # Run the document worker inside the web process instead of as its own service (free tiers without workers).
+    run_worker_in_web: bool = False
     forwarded_allow_ips: str = "127.0.0.1"
     log_level: str = "INFO"
 

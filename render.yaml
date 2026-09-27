@@ -1,8 +1,13 @@
 # Render Blueprint — https://render.com/docs/blueprint-spec
-# Creates the web service, the document worker and a private Key Value (Redis-compatible) instance.
-# MongoDB (Atlas), object storage (Cloudflare R2 or S3) and Google OAuth are external: variables marked
-# `sync: false` are prompted for in the Render dashboard the first time the Blueprint is applied.
-# Keep every service and your Atlas cluster in the same region.
+#
+# One web service that also runs the document worker (RUN_WORKER_IN_WEB), plus a Key Value instance for the job
+# queue and rate limits. This fits Render's free tier, which does not include background workers.
+#
+# To split the worker back out (paid, always on, never blocked by a sleeping instance): set RUN_WORKER_IN_WEB=false,
+# uncomment the worker service below, and give both services a paid plan.
+#
+# MongoDB (Atlas), object storage (Supabase/R2/S3) and Google OAuth are external. Variables marked `sync: false`
+# are prompted for in the Render dashboard the first time the Blueprint is applied.
 
 envVarGroups:
   - name: paperchat-shared
@@ -11,34 +16,38 @@ envVarGroups:
         value: production
       - key: LOG_LEVEL
         value: INFO
-      - key: PUBLIC_BASE_URL          # e.g. https://paperchat.onrender.com or your custom domain, no trailing slash
+      - key: PUBLIC_BASE_URL          # https://<service>.onrender.com, or your domain. No trailing slash.
         sync: false
       - key: SESSION_SECRET
         generateValue: true
-      - key: MONGO_URL                # Atlas connection string: mongodb+srv://user:pass@cluster/...
+      - key: MONGO_URL                # Atlas: mongodb+srv://user:pass@cluster/...
         sync: false
       - key: MONGO_DATABASE
         value: paperchat
+
+      # Object storage for the PDFs themselves (any S3-compatible service).
       - key: STORAGE_BACKEND
         value: s3
       - key: S3_BUCKET
         sync: false
-      - key: S3_ENDPOINT_URL          # R2: https://<account-id>.r2.cloudflarestorage.com (leave empty for AWS S3)
+      - key: S3_ENDPOINT_URL          # Supabase: https://<ref>.storage.supabase.co/storage/v1/s3
         sync: false
-      - key: S3_REGION                # R2: auto · AWS: e.g. us-east-1
-        value: auto
+      - key: S3_REGION                # Supabase: the project's region, e.g. ap-south-1. AWS S3: the bucket's region.
+        sync: false
       - key: S3_ACCESS_KEY_ID
         sync: false
       - key: S3_SECRET_ACCESS_KEY
         sync: false
+
       - key: GOOGLE_CLIENT_ID
         sync: false
       - key: GOOGLE_CLIENT_SECRET
         sync: false
-      # AI provider (OpenAI-compatible). Defaults below use Google Gemini; for OpenAI set AI_BASE_URL to empty,
-      # AI_CHAT_MODEL=gpt-4.1-mini, AI_EMBEDDING_MODEL=text-embedding-3-small, EMBEDDING_DIMENSIONS=1024 and
-      # remove AI_REASONING_EFFORT. Changing the embedding model/size requires re-uploading documents.
-      - key: AI_API_KEY               # required: embeddings at upload + generated answers
+
+      # AI provider (any OpenAI-compatible API). Defaults below use Google Gemini's free tier; for OpenAI set
+      # AI_BASE_URL empty, AI_CHAT_MODEL=gpt-4.1-mini, AI_EMBEDDING_MODEL=text-embedding-3-small,
+      # EMBEDDING_DIMENSIONS=1024 and remove AI_REASONING_EFFORT.
+      - key: AI_API_KEY
         sync: false
       - key: AI_BASE_URL
         value: https://generativelanguage.googleapis.com/v1beta/openai/
@@ -52,26 +61,30 @@ envVarGroups:
         value: low
       - key: AI_MAX_OUTPUT_TOKENS
         value: "2048"
-      - key: RERANK_MODE            # see eval/README.md; "never" saves ~110 MB of memory
-        value: lexical-only
+
+      # Sized for a 512 MB instance that also processes PDFs. Raise these on a paid plan.
       - key: MAX_UPLOAD_MB
-        value: "25"
+        value: "10"
       - key: MAX_PAGES
-        value: "500"
+        value: "150"
       - key: WORKER_TIMEOUT_SECONDS
         value: "300"
+      - key: RERANK_MODE              # see eval/README.md; "never" avoids loading the model at all
+        value: lexical-only
 
 services:
   - type: web
     name: paperchat-web
     runtime: docker
     dockerfilePath: ./Dockerfile
-    plan: 0.5c-512mb              # raise to 1c-2g, or set RERANK_MODE=never, if reranking is turned on
+    plan: free                        # sleeps after 15 minutes idle; a paid plan stays awake
     region: oregon
     healthCheckPath: /healthz
     autoDeployTrigger: checksPass
     envVars:
       - fromGroup: paperchat-shared
+      - key: RUN_WORKER_IN_WEB        # set to false once the worker below runs as its own service
+        value: "true"
       - key: REDIS_URL
         fromService:
           type: keyvalue
@@ -80,26 +93,25 @@ services:
       - key: FORWARDED_ALLOW_IPS      # only Render's proxy can reach the service
         value: "*"
 
-  - type: worker
-    name: paperchat-worker
-    runtime: docker
-    dockerfilePath: ./Dockerfile
-    dockerCommand: python -m app.worker
-    plan: 0.5c-512mb                  # raise to 1c-2g if large PDFs run out of memory
-    region: oregon
-    autoDeployTrigger: checksPass
-    envVars:
-      - fromGroup: paperchat-shared
-      - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: paperchat-redis
-          property: connectionString
+  # - type: worker
+  #   name: paperchat-worker
+  #   runtime: docker
+  #   dockerfilePath: ./Dockerfile
+  #   dockerCommand: python -m app.worker
+  #   plan: 0.5c-512mb                # background workers are not available on the free tier
+  #   region: oregon
+  #   autoDeployTrigger: checksPass
+  #   envVars:
+  #     - fromGroup: paperchat-shared
+  #     - key: REDIS_URL
+  #       fromService:
+  #         type: keyvalue
+  #         name: paperchat-redis
+  #         property: connectionString
 
   - type: keyvalue
     name: paperchat-redis
-    plan: 256mb
+    plan: free                        # free instances do not persist to disk: queued jobs are lost on restart
     region: oregon
     ipAllowList: []                   # private network only
     maxmemoryPolicy: noeviction       # never silently drop queued jobs
-    persistenceMode: journal-snapshot
