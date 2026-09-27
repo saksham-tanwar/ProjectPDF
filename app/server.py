@@ -38,6 +38,10 @@ def create_app(settings: Settings | None = None, *, queue=None, redis=None, stor
         state.queue = queue or create_queue(sync_redis, settings)
         state.storage = storage or create_storage(settings)
         state.oauth = auth.create_oauth(settings)
+        if settings.run_worker_in_web and queue is None:
+            from app.worker import start_in_thread
+
+            state.worker_thread = start_in_thread(settings)
         try:
             await ensure_indexes(state.db)
         except Exception:
